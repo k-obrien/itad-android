@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ IsThereAnyDeal Android
+  ~ Copyright (C) 2018-present  Kieran O'Brien
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="preference_screen_root">
+    <PreferenceScreen
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:key="preference_screen_legal_information"
+        android:title="@string/title_preference_screen_legal_information">
+        <Preference android:title="@string/title_preference_licenses">
+            <intent
+                android:targetClass="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+                android:targetPackage="@string/app_id" />
+        </Preference>
+        <Preference android:title="@string/title_preference_privacy_policy">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://isthereanydeal.com/legal/privacy/" />
+        </Preference>
+    </PreferenceScreen>
+    <Preference
+        android:selectable="false"
+        android:summary="@string/app_version"
+        android:title="@string/title_preference_version" />
+</PreferenceScreen>

@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ IsThereAnyDeal Android
   ~ Copyright (C) 2018-present  Kieran O'Brien
   ~
@@ -16,14 +16,8 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<resources>
-    <string name="app_name">IsThereAnyDeal</string>
-    <string name="action_settings">Settings</string>
-    <string name="text_snackbar_open_source_licenses">Open source licenses</string>
-    <string name="text_action_snackbar_open_source_licenses">Show licenses</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="title_preference_licenses">Third-party licenses</string>
-    <string name="title_preference_privacy_policy">Privacy policy</string>
-    <string name="title_preference_screen_legal_information">Legal information</string>
-    <string name="title_preference_version">Version</string>
-</resources>
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment"
+    android:name="network.obrien.isthereanydeal.settings.SettingsActivity$SettingsFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />

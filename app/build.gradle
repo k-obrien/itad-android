@@ -17,13 +17,9 @@
  */
 
 apply plugin: "com.android.application"
-
 apply plugin: "kotlin-android"
-
 apply plugin: "kotlin-android-extensions"
-
 apply plugin: "kotlin-kapt"
-
 apply plugin: "com.google.gms.oss.licenses.plugin"
 
 android {
@@ -41,10 +37,14 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro",
                     "proguard-retrofit-rules.pro", "proguard-okio-rules.pro"
+            resValue "string", "app_id", "${defaultConfig.applicationId}"
+            resValue "string", "app_version", "${defaultConfig.versionName}"
         }
         debug {
-            applicationIdSuffix ".debug"
             debuggable true
+            applicationIdSuffix ".debug"
+            resValue "string", "app_id", "${defaultConfig.applicationId}${applicationIdSuffix}"
+            resValue "string", "app_version", "${defaultConfig.versionName}${applicationIdSuffix}"
         }
     }
     dataBinding {
@@ -57,13 +57,20 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    // Anko
+    def anko_version = "0.10.5"
+    implementation "org.jetbrains.anko:anko:$anko_version"
+
     // Third party licensing
     def play_services_oss_licenses_version = "15.0.1"
     implementation "com.google.android.gms:play-services-oss-licenses:$play_services_oss_licenses_version"
 
     // Support
     def appcompat_version = "27.1.1"
+    implementation "com.android.support:support-v4:$appcompat_version"
     implementation "com.android.support:appcompat-v7:$appcompat_version"
+    implementation "com.android.support:preference-v7:$appcompat_version"
+    implementation "com.android.support:preference-v14:$appcompat_version"
     implementation "com.android.support:design:$appcompat_version"
 
     // Constraint layout
