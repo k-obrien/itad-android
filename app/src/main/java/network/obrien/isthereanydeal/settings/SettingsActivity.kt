@@ -22,13 +22,36 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.preference.PreferenceFragmentCompat
 import android.support.v7.preference.PreferenceScreen
+import android.view.MenuItem
+import kotlinx.android.synthetic.main.activity_settings.*
 import network.obrien.isthereanydeal.R
 
 class SettingsActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        if ((fragment_settings as? SettingsFragment)?.onBackPressed() == true) {
+            supportActionBar?.title = getString(R.string.title_activity_settings)
+            return
+        }
+
+        super.onBackPressed()
     }
 
     class SettingsFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
@@ -36,11 +59,22 @@ class SettingsActivity : AppCompatActivity() {
             addPreferencesFromResource(R.xml.preferences)
         }
 
-        override fun onPreferenceStartScreen(caller: PreferenceFragmentCompat?, pref: PreferenceScreen?): Boolean {
-            preferenceScreen = pref
-            return true
+        override fun onPreferenceStartScreen(caller: PreferenceFragmentCompat?, preferenceScreen: PreferenceScreen?): Boolean {
+            return navigateToPreferenceScreen(preferenceScreen)
         }
 
         override fun getCallbackFragment() = this
+
+        fun onBackPressed() = navigateToPreferenceScreen((preferenceScreen?.parent as? PreferenceScreen))
+
+        private fun navigateToPreferenceScreen(preferenceScreen: PreferenceScreen?): Boolean {
+            preferenceScreen?.let {
+                this.preferenceScreen = it
+                (activity as? SettingsActivity)?.supportActionBar?.title = it.title
+                return true
+            }
+
+            return false
+        }
     }
 }
