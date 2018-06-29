@@ -1,5 +1,5 @@
 <!--
-  ~ IsThereAnyDeal Android
+  ~ ITAD Android
   ~ Copyright (C) 2018-present  Kieran O'Brien
   ~
   ~ This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,16 @@
   -->
 
 <resources>
-    <string name="app_name">IsThereAnyDeal</string>
-    <string name="action_settings">Settings</string>
+    <!-- Application -->
+    <string name="app_name">ITAD Android</string>
 
     <!-- Settings -->
+    <string name="action_settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_preference_screen_legal_information">Legal information</string>
     <string name="title_preference_licenses">Third-party licenses</string>
-    <string name="title_preference_privacy_policy">Privacy policy</string>
+    <string name="url_licenses">file:///android_asset/licenses/%1$s.html</string>
+    <string name="title_preference_privacy_policy">IsThereAnyDeal.com Privacy policy</string>
     <string name="url_preference_privacy_policy">https://isthereanydeal.com/legal/privacy/</string>
     <string name="title_preference_disclaimer">IsThereAnyDeal.com kindly provide the API powering this app but are not in any way affiliated with it.</string>
     <string name="url_preference_disclaimer">https://isthereanydeal.com</string>

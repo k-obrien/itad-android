@@ -1,5 +1,5 @@
 /*
- * IsThereAnyDeal Android
+ * ITAD Android
  * Copyright (C) 2018-present  Kieran O'Brien
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,13 +18,20 @@
 
 package network.obrien.isthereanydeal.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.preference.Preference
 import android.support.v7.preference.PreferenceFragmentCompat
 import android.support.v7.preference.PreferenceScreen
 import android.view.MenuItem
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_settings.*
 import network.obrien.isthereanydeal.R
+import network.obrien.isthereanydeal.license.INTENT_EXTRA_KEY_DEPENDENCY
+import network.obrien.isthereanydeal.license.INTENT_EXTRA_KEY_LICENSE
+import network.obrien.isthereanydeal.license.LicenseActivity
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,27 +61,82 @@ class SettingsActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
-    class SettingsFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
+    class SettingsFragment : PreferenceFragmentCompat(),
+        PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             addPreferencesFromResource(R.xml.preferences)
         }
 
-        override fun onPreferenceStartScreen(caller: PreferenceFragmentCompat?, preferenceScreen: PreferenceScreen?): Boolean {
+        override fun onPreferenceStartScreen(
+            caller: PreferenceFragmentCompat?,
+            preferenceScreen: PreferenceScreen?
+        ): Boolean {
+            preferenceScreen
+                ?.takeIf {
+                    it.title == getString(R.string.title_preference_licenses)
+                            && it.preferenceCount == 1
+                }
+                ?.apply {
+                    val packageName = getString(R.string.app_id)
+                    removeAll()
+                    resources.assets.open("third_party_licenses.json")
+                        .use { inputStream ->
+                            inputStream.bufferedReader()
+                                .use { it.readText() }
+                                .let {
+                                    Gson().fromJson<List<ThirdPartyLicenses>>(
+                                        it,
+                                        object : TypeToken<List<ThirdPartyLicenses>>() {}.type
+                                    )
+                                }
+                                .map { licenses ->
+                                    licenses.dependencies
+                                        .map {
+                                            it to licenses.license
+                                        }
+                                }
+                                .flatMap { it }
+                                .sortedBy { it.first.toLowerCase() }
+                                .forEach {
+                                    Preference(context)
+                                        .apply {
+                                            title = it.first
+                                            intent = Intent()
+                                                .apply {
+                                                    `package` = packageName
+                                                    setClass(context, LicenseActivity::class.java)
+                                                    putExtra(INTENT_EXTRA_KEY_DEPENDENCY, it.first)
+                                                    putExtra(INTENT_EXTRA_KEY_LICENSE, it.second)
+                                                }
+                                        }
+                                        .also { addPreference(it) }
+                                }
+                        }
+                }
+
             return navigateToPreferenceScreen(preferenceScreen)
         }
 
         override fun getCallbackFragment() = this
 
-        fun onBackPressed() = navigateToPreferenceScreen((preferenceScreen?.parent as? PreferenceScreen))
+        fun onBackPressed() =
+            navigateToPreferenceScreen((preferenceScreen?.parent as? PreferenceScreen))
 
         private fun navigateToPreferenceScreen(preferenceScreen: PreferenceScreen?): Boolean {
-            preferenceScreen?.let {
-                this.preferenceScreen = it
-                (activity as? SettingsActivity)?.supportActionBar?.title = it.title
-                return true
-            }
+            preferenceScreen
+                ?.let {
+                    this.preferenceScreen = it
+                    (activity as? SettingsActivity)?.supportActionBar?.title = it.title
+                    return true
+                }
 
             return false
         }
+
+        data class ThirdPartyLicenses(
+            val dependencies: List<String>,
+            val license: String
+        )
     }
 }
+

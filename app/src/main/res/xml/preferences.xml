@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ IsThereAnyDeal Android
+  ~ ITAD Android
   ~ Copyright (C) 2018-present  Kieran O'Brien
   ~
   ~ This program is free software: you can redistribute it and/or modify
@@ -22,16 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="@string/title_preference_screen_legal_information">
-        <Preference android:title="@string/title_preference_licenses">
-            <intent
-                android:targetClass="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
-                android:targetPackage="@string/app_id">
-                <extra
-                    android:name="title"
-                    android:value="@string/title_preference_licenses" />
-            </intent>
-        </Preference>
-        <Preference android:title="@string/title_preference_privacy_policy">
+        <PreferenceScreen
+            android:title="@string/title_preference_licenses">
+            <!-- Empty preference required or Android won't load the preference screen -->
+            <Preference android:title="" />
+        </PreferenceScreen>
+        <Preference
+            android:title="@string/title_preference_privacy_policy">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="@string/url_preference_privacy_policy" />
