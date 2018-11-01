@@ -23,11 +23,11 @@ apply plugin: "kotlin-kapt"
 apply plugin: "com.google.gms.oss.licenses.plugin"
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "network.obrien.isthereanydeal"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -43,8 +43,9 @@ android {
         debug {
             debuggable true
             applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
             resValue "string", "app_id", "${defaultConfig.applicationId}${applicationIdSuffix}"
-            resValue "string", "app_version", "${defaultConfig.versionName}${applicationIdSuffix}"
+            resValue "string", "app_version", "${defaultConfig.versionName}${versionNameSuffix}"
         }
     }
     dataBinding {
@@ -62,11 +63,11 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$anko_version"
 
     // Third party licensing
-    def play_services_oss_licenses_version = "15.0.1"
-    implementation "com.google.android.gms:play-services-oss-licenses:$play_services_oss_licenses_version"
+    def play_services_oss_licenses_version = "16.0.1"
+    debugImplementation "com.google.android.gms:play-services-oss-licenses:$play_services_oss_licenses_version"
 
     // Support
-    def appcompat_version = "27.1.1"
+    def appcompat_version = "28.0.0"
     implementation "com.android.support:support-v4:$appcompat_version"
     implementation "com.android.support:appcompat-v7:$appcompat_version"
     implementation "com.android.support:preference-v7:$appcompat_version"
@@ -74,7 +75,7 @@ dependencies {
     implementation "com.android.support:design:$appcompat_version"
 
     // Constraint layout
-    def constraint_layout_version = "1.1.0"
+    def constraint_layout_version = "1.1.3"
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
 
     // Timber
@@ -85,7 +86,6 @@ dependencies {
     def dagger_version = "2.16"
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
-
     implementation "com.google.dagger:dagger-android:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
@@ -93,7 +93,6 @@ dependencies {
     // RxJava
     def rxjava_version = "2.1.13"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-
     def rxandroid_version = "2.0.2"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
@@ -102,17 +101,14 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
     def okhttp_version = "3.10.0"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     // Testing
     def junit_version = "4.12"
     testImplementation "junit:junit:$junit_version"
-
     def runner_version = "1.0.2"
     androidTestImplementation "com.android.support.test:runner:$runner_version"
-
     def espresso_version = "3.0.2"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
 }
