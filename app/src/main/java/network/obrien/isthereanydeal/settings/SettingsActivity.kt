@@ -72,16 +72,13 @@ class SettingsActivity : AppCompatActivity() {
             preferenceScreen: PreferenceScreen?
         ): Boolean {
             preferenceScreen
-                ?.takeIf {
-                    it.title == getString(R.string.title_preference_licenses)
-                            && it.preferenceCount == 1
-                }
+                ?.takeIf { (it.title == getString(R.string.title_preference_licenses)) && (it.preferenceCount == 1) }
                 ?.apply {
-                    val packageName = getString(R.string.app_id)
                     removeAll()
                     resources.assets.open("third_party_licenses.json")
                         .use { inputStream ->
-                            inputStream.bufferedReader()
+                            inputStream
+                                .bufferedReader()
                                 .use { it.readText() }
                                 .let {
                                     Gson().fromJson<List<ThirdPartyLicenses>>(
@@ -89,28 +86,25 @@ class SettingsActivity : AppCompatActivity() {
                                         object : TypeToken<List<ThirdPartyLicenses>>() {}.type
                                     )
                                 }
-                                .map { licenses ->
-                                    licenses.dependencies
-                                        .map {
-                                            it to licenses.license
-                                        }
-                                }
-                                .flatMap { it }
-                                .sortedBy { it.first.toLowerCase() }
-                                .forEach {
-                                    Preference(context)
-                                        .apply {
-                                            title = it.first
-                                            intent = Intent()
-                                                .apply {
-                                                    `package` = packageName
-                                                    setClass(context, LicenseActivity::class.java)
-                                                    putExtra(INTENT_EXTRA_KEY_DEPENDENCY, it.first)
-                                                    putExtra(INTENT_EXTRA_KEY_LICENSE, it.second)
+                                .flatMap { licenses ->
+                                    licenses.dependencies.map { dependency ->
+                                        Intent()
+                                            .apply {
+                                                `package` = getString(R.string.app_id)
+                                                setClass(context, LicenseActivity::class.java)
+                                                putExtra(INTENT_EXTRA_KEY_DEPENDENCY, dependency)
+                                                putExtra(INTENT_EXTRA_KEY_LICENSE, licenses.license)
+                                            }
+                                            .let {
+                                                Preference(context).apply {
+                                                    title = dependency
+                                                    intent = it
                                                 }
-                                        }
-                                        .also { addPreference(it) }
+                                            }
+                                    }
                                 }
+                                .sortedBy { it.title.toString().toLowerCase() }
+                                .forEach { addPreference(it) }
                         }
                 }
 
