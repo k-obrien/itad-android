@@ -35,25 +35,20 @@ class LicenseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_license)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        title = intent.extras[INTENT_EXTRA_KEY_DEPENDENCY] as String
+        (intent?.extras?.getString(INTENT_EXTRA_KEY_DEPENDENCY))?.also { title = it }
 
-        webview
-            .apply {
-                settings.loadWithOverviewMode = true
-                setInitialScale(170)
-                settings.setSupportZoom(true)
-                settings.builtInZoomControls = true
-                settings.displayZoomControls = false
-                webChromeClient = object : WebChromeClient() {
-                    override fun onReceivedTitle(view: WebView?, title: String?) {
-                        super.onReceivedTitle(view, title)
-                        supportActionBar?.subtitle = webview.title
-                    }
+        webview.apply {
+            webChromeClient = object : WebChromeClient() {
+                override fun onReceivedTitle(view: WebView?, title: String?) {
+                    super.onReceivedTitle(view, title)
+                    supportActionBar?.subtitle = webview.title
                 }
-
-                loadUrl(getString(R.string.url_licenses, intent.extras[INTENT_EXTRA_KEY_LICENSE]))
             }
 
+            intent?.extras?.getString(INTENT_EXTRA_KEY_LICENSE)?.also {
+                loadUrl(getString(R.string.url_licenses, it))
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
