@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.license
+package network.obrien.isthereanydeal.settings
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

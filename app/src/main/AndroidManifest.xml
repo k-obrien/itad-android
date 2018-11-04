@@ -46,7 +46,7 @@
                 android:value="network.obrien.isthereanydeal.MainActivity" />
         </activity>
         <activity
-            android:name=".license.LicenseActivity"
+            android:name=".settings.LicenseActivity"
             android:parentActivityName=".settings.SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
