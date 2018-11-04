@@ -1,3 +1,15 @@
-pre {
-	white-space: pre-wrap;
+html {
+    font-family: monospace
+}
+
+div.centered {
+    text-align: center;
+}
+
+ol.outdented {
+    margin-inline-start: -1em;
+}
+
+p.indented {
+    margin-inline-start: 2em;
 }
