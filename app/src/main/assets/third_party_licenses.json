@@ -5,6 +5,7 @@
             "net.sf.kxml:kxml2",
             "org.bouncycastle:bcpkix-jdk15on",
             "org.bouncycastle:bcprov-jdk15on",
+            "org.checkerframework:checker-compat-qual",
             "org.codehaus.mojo:animal-sniffer-annotations"
         ],
         "license": "mit"
@@ -34,12 +35,6 @@
             "org.reactivestreams:reactive-streams"
         ],
         "license": "cc0_1_0"
-    },
-    {
-        "dependencies": [
-            "org.checkerframework:checker-compat-qual"
-        ],
-        "license": "checker_framework"
     },
     {
         "dependencies": [
