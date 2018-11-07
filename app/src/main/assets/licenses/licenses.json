@@ -28,13 +28,13 @@
         "dependencies": [
             "STL"
         ],
-        "license": "sgi_stl"
+        "license": "sgi-stl"
     },
     {
         "dependencies": [
             "org.reactivestreams:reactive-streams"
         ],
-        "license": "cc0_1_0"
+        "license": "cc0-1.0"
     },
     {
         "dependencies": [
@@ -72,7 +72,7 @@
             "com.google.android.gms:play-services-basement",
             "com.google.android.gms:play-services-oss-licenses"
         ],
-        "license": "android_sdk"
+        "license": "android-sdk"
     },
     {
         "dependencies": [

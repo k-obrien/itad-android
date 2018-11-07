@@ -72,7 +72,7 @@ class SettingsActivity : AppCompatActivity() {
                 ?.takeIf { (it.title == getString(R.string.title_preference_licenses)) && (it.preferenceCount == 1) }
                 ?.apply {
                     removeAll()
-                    resources.assets.open("licenses/third_party_licenses.json")
+                    resources.assets.open("licenses/licenses.json")
                         .use { inputStream ->
                             inputStream
                                 .bufferedReader()
