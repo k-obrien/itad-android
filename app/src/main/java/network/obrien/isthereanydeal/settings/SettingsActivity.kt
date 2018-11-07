@@ -29,9 +29,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_settings.*
 import network.obrien.isthereanydeal.R
-import network.obrien.isthereanydeal.license.INTENT_EXTRA_KEY_DEPENDENCY
-import network.obrien.isthereanydeal.license.INTENT_EXTRA_KEY_LICENSE
-import network.obrien.isthereanydeal.license.LicenseActivity
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +72,7 @@ class SettingsActivity : AppCompatActivity() {
                 ?.takeIf { (it.title == getString(R.string.title_preference_licenses)) && (it.preferenceCount == 1) }
                 ?.apply {
                     removeAll()
-                    resources.assets.open("third_party_licenses.json")
+                    resources.assets.open("licenses/third_party_licenses.json")
                         .use { inputStream ->
                             inputStream
                                 .bufferedReader()
