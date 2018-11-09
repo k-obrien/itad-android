@@ -6,10 +6,18 @@ div.centered {
     text-align: center;
 }
 
-ol.outdented {
-    margin-inline-start: -1em;
+p.margin-start-2em {
+    margin-inline-start: 2em;
 }
 
-p.indented {
-    margin-inline-start: 2em;
+p.indent-1em {
+    text-indent: 1em;
+}
+
+p.indent-2em {
+    text-indent: 2em;
+}
+
+ol.outdented {
+    margin-inline-start: -1em;
 }

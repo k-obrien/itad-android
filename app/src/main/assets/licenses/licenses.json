@@ -59,7 +59,7 @@
         "dependencies": [
             "com.google.errorprone:javac-shaded"
         ],
-        "license": "gpl_2_0_ce"
+        "license": "gpl-2.0-ce"
     },
     {
         "dependencies": [
