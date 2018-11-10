@@ -65,7 +65,7 @@
         "dependencies": [
             "org.jetbrains.trove4j:trove4j"
         ],
-        "license": "lgpl_2_1"
+        "license": "lgpl-2.1"
     },
     {
         "dependencies": [
