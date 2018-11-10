@@ -10,6 +10,10 @@ p.margin-start-2em {
     margin-inline-start: 2em;
 }
 
+p.margin-start-4em {
+    margin-inline-start: 4em;
+}
+
 p.indent-1em {
     text-indent: 1em;
 }

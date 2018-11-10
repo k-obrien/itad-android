@@ -53,7 +53,7 @@
         "dependencies": [
             "com.googlecode.juniversalchardet:juniversalchardet"
         ],
-        "license": "mpl_1_1"
+        "license": "mpl-1.1"
     },
     {
         "dependencies": [
