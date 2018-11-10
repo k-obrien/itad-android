@@ -37,17 +37,15 @@ class LicenseActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (intent?.extras?.getString(INTENT_EXTRA_KEY_DEPENDENCY))?.also { title = it }
 
-        webview.apply {
-            webChromeClient = object : WebChromeClient() {
-                override fun onReceivedTitle(view: WebView?, title: String?) {
-                    super.onReceivedTitle(view, title)
-                    supportActionBar?.subtitle = webview.title
-                }
+        webview.webChromeClient = object : WebChromeClient() {
+            override fun onReceivedTitle(view: WebView?, title: String?) {
+                super.onReceivedTitle(view, title)
+                supportActionBar?.subtitle = webview.title
             }
+        }
 
-            intent?.extras?.getString(INTENT_EXTRA_KEY_LICENSE)?.also {
-                loadUrl(getString(R.string.url_licenses, it))
-            }
+        intent?.extras?.getString(INTENT_EXTRA_KEY_LICENSE)?.also {
+            webview.loadUrl(getString(R.string.url_licenses, it))
         }
     }
 
