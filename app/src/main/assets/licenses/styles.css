@@ -25,3 +25,8 @@ p.indent-2em {
 ol.outdented {
     margin-inline-start: -1em;
 }
+
+hr { 
+    border: 0;
+    border-top: 2px dashed black;
+}

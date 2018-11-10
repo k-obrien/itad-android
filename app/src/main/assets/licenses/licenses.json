@@ -47,7 +47,7 @@
       "org.glassfish.jaxb:txw2",
       "org.jvnet.staxex:stax-ex"
     ],
-    "license": "javaee"
+    "license": "java-ee"
   },
   {
     "dependencies": [
