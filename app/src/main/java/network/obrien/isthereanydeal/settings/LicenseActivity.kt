@@ -45,7 +45,7 @@ class LicenseActivity : AppCompatActivity() {
         }
 
         intent?.extras?.getString(INTENT_EXTRA_KEY_LICENSE)?.also {
-            webview.loadUrl(getString(R.string.url_licenses, it))
+            webview.loadUrl(getString(R.string.preference_license_base_url, it))
         }
     }
 

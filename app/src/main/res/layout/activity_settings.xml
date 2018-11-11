@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/title_activity_settings">
+            app:title="@string/activity_settings_title">
 
         </android.support.v7.widget.Toolbar>
 

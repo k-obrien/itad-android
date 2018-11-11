@@ -29,6 +29,9 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_settings.*
 import network.obrien.isthereanydeal.R
+import org.jetbrains.anko.okButton
+import org.jetbrains.anko.support.v4.alert
+import timber.log.Timber
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,12 +53,8 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if ((fragment_settings as? SettingsFragment)?.onBackPressed() == true) {
-            supportActionBar?.title = getString(R.string.title_activity_settings)
-            return
-        }
-
-        super.onBackPressed()
+        if ((fragment_settings as? SettingsFragment)?.onBackPressed() == false)
+            super.onBackPressed()
     }
 
     class SettingsFragment : PreferenceFragmentCompat(),
@@ -68,42 +67,49 @@ class SettingsActivity : AppCompatActivity() {
             caller: PreferenceFragmentCompat?,
             preferenceScreen: PreferenceScreen?
         ): Boolean {
-            preferenceScreen
-                ?.takeIf { (it.title == getString(R.string.title_preference_licenses)) && (it.preferenceCount == 1) }
-                ?.apply {
-                    removeAll()
-                    resources.assets.open("licenses/licenses.json")
-                        .use { inputStream ->
-                            inputStream
-                                .bufferedReader()
-                                .use { it.readText() }
-                                .let {
-                                    Gson().fromJson<List<ThirdPartyLicenses>>(
-                                        it,
-                                        object : TypeToken<List<ThirdPartyLicenses>>() {}.type
-                                    )
-                                }
-                                .flatMap { licenses ->
-                                    licenses.dependencies.map { dependency ->
-                                        Intent()
-                                            .apply {
-                                                `package` = getString(R.string.app_id)
-                                                setClass(context, LicenseActivity::class.java)
-                                                putExtra(INTENT_EXTRA_KEY_DEPENDENCY, dependency)
-                                                putExtra(INTENT_EXTRA_KEY_LICENSE, licenses.license)
-                                            }
-                                            .let {
-                                                Preference(context).apply {
-                                                    title = dependency
-                                                    intent = it
-                                                }
-                                            }
-                                    }
-                                }
-                                .sortedBy { it.title.toString().toLowerCase() }
-                                .forEach { addPreference(it) }
+            preferenceScreen?.takeIf {
+                (it.title == getString(R.string.preference_licenses_title)) &&
+                        (it.preferenceCount == 1)
+            }?.apply {
+                removeAll()
+
+                try {
+                    resources.assets.open(getString(R.string.preference_licenses_url))
+                        .use { input -> input.bufferedReader().use { reader -> reader.readText() } }
+                        .let { json ->
+                            Gson().fromJson<List<ThirdPartyLicenses>>(
+                                json,
+                                object : TypeToken<List<ThirdPartyLicenses>>() {}.type
+                            )
                         }
+                } catch (e: Exception) {
+                    Timber.e(e)
+                    null
                 }
+                    ?.flatMap { licenses ->
+                        licenses.dependencies.map { dependency ->
+                            Preference(context).apply {
+                                title = dependency
+                                intent = Intent().apply {
+                                    `package` = getString(R.string.app_id)
+                                    setClass(context, LicenseActivity::class.java)
+                                    putExtra(INTENT_EXTRA_KEY_DEPENDENCY, dependency)
+                                    putExtra(INTENT_EXTRA_KEY_LICENSE, licenses.license)
+                                }
+
+                            }
+                        }
+                    }
+                    ?.sortedBy { it.title.toString().toLowerCase() }
+                    ?.forEach { addPreference(it) }
+                    ?: alert(getString(R.string.dialog_licenses_error_content)) {
+                        isCancelable = false
+                        okButton {
+                            getString(android.R.string.ok)
+                            activity?.finish()
+                        }
+                    }.show()
+            }
 
             return navigateToPreferenceScreen(preferenceScreen)
         }
@@ -114,14 +120,12 @@ class SettingsActivity : AppCompatActivity() {
             navigateToPreferenceScreen((preferenceScreen?.parent as? PreferenceScreen))
 
         private fun navigateToPreferenceScreen(preferenceScreen: PreferenceScreen?): Boolean {
-            preferenceScreen
-                ?.let {
-                    this.preferenceScreen = it
-                    (activity as? SettingsActivity)?.supportActionBar?.title = it.title
-                    return true
-                }
+            if (preferenceScreen == null)
+                return false
 
-            return false
+            this.preferenceScreen = preferenceScreen
+            (activity as? SettingsActivity)?.supportActionBar?.title = preferenceScreen.title
+            return true
         }
 
         data class ThirdPartyLicenses(
