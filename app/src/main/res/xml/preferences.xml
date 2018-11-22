@@ -34,7 +34,7 @@
                 android:data="@string/preference_privacy_policy_url" />
         </Preference>
         <Preference
-            android:summary="@string/preference_disclaimer_url"
+            android:summary="@string/preference_disclaimer_summary"
             android:title="@string/preference_disclaimer_title"
             app:singleLineTitle="false">
             <intent

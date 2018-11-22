@@ -32,7 +32,8 @@
     <string name="preference_license_base_url">file:///android_asset/licenses/%1$s.html</string>
     <string name="preference_privacy_policy_title">IsThereAnyDeal.com Privacy policy</string>
     <string name="preference_privacy_policy_url">https://isthereanydeal.com/legal/privacy/</string>
-    <string name="preference_disclaimer_title">IsThereAnyDeal.com kindly provide the API powering this app but are not in any way affiliated with it.</string>
+    <string name="preference_disclaimer_title">IsThereAnyDeal.com</string>
+    <string name="preference_disclaimer_summary">ITAD Android has no affiliation with IsThereAnyDeal.com</string>
     <string name="preference_disclaimer_url">https://isthereanydeal.com</string>
     <string name="preference_version_title">Version</string>
     <string name="dialog_licenses_error_content">An error occurred while trying to load third-party licenses.</string>
