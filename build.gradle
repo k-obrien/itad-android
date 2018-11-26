@@ -24,6 +24,9 @@ buildscript {
             "androidx"                  : [
                     "appcompat"            : "1.0.2",
                     "constraintlayout"     : "2.0.0-alpha2",
+                    "ktx_collection"       : "1.0.0",
+                    "ktx_core"             : "1.0.1",
+                    "ktx_fragment"         : "1.1.0-alpha01",
                     "legacy_preference_v14": "1.0.0",
                     "legacy_support_v4"    : "1.0.0",
                     "material"             : "1.1.0-alpha01",

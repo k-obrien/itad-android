@@ -74,8 +74,13 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintlayout}"
     implementation "androidx.legacy:legacy-preference-v14:${versions.androidx.legacy_preference_v14}"
     implementation "androidx.legacy:legacy-support-v4:${versions.androidx.legacy_support_v4}"
-    implementation "com.google.android.material:material:${versions.androidx.material}"
     implementation "androidx.preference:preference:${versions.androidx.preference}"
+    implementation "com.google.android.material:material:${versions.androidx.material}"
+
+    // KTX
+    implementation "androidx.collection:collection-ktx:${versions.androidx.ktx_collection}"
+    implementation "androidx.core:core-ktx:${versions.androidx.ktx_core}"
+    implementation "androidx.fragment:fragment-ktx:${versions.androidx.ktx_fragment}"
 
     // Timber
     implementation "com.jakewharton.timber:timber:${versions.timber}"
