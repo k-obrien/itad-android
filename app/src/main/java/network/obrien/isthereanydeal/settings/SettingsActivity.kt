@@ -58,58 +58,58 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     internal class SettingsFragment : PreferenceFragmentCompat(),
-            PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
+        PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             addPreferencesFromResource(R.xml.preferences)
         }
 
         override fun onPreferenceStartScreen(
-                caller: PreferenceFragmentCompat?,
-                preferenceScreen: PreferenceScreen?
+            caller: PreferenceFragmentCompat?,
+            preferenceScreen: PreferenceScreen?
         ): Boolean {
             preferenceScreen
-                    ?.takeIf { (it.title == getString(R.string.preference_licenses_title)) && (it.preferenceCount == 1) }
-                    ?.apply {
-                        removeAll()
+                ?.takeIf { (it.title == getString(R.string.preference_licenses_title)) && (it.preferenceCount == 1) }
+                ?.apply {
+                    removeAll()
 
-                        try {
-                            resources.assets
-                                    .open(getString(R.string.preference_licenses_url))
-                                    .use { input -> input.bufferedReader().use { reader -> reader.readText() } }
-                                    .let { json ->
-                                        Gson().fromJson<List<ThirdPartyLicenses>>(
-                                                json,
-                                                object : TypeToken<List<ThirdPartyLicenses>>() {}.type
-                                        )
+                    try {
+                        resources.assets
+                            .open(getString(R.string.preference_licenses_url))
+                            .use { input -> input.bufferedReader().use { reader -> reader.readText() } }
+                            .let { json ->
+                                Gson().fromJson<List<ThirdPartyLicenses>>(
+                                    json,
+                                    object : TypeToken<List<ThirdPartyLicenses>>() {}.type
+                                )
+                            }
+                            ?.flatMap { licenses ->
+                                licenses.dependencies.map { dependency ->
+                                    Preference(context).apply {
+                                        title = dependency
+                                        intent = context
+                                            .intentFor<LicenseActivity>(
+                                                INTENT_EXTRA_KEY_DEPENDENCY to dependency,
+                                                INTENT_EXTRA_KEY_LICENSE to licenses.license
+                                            )
+                                            .setPackage(getString(R.string.app_id))
                                     }
-                                    ?.flatMap { licenses ->
-                                        licenses.dependencies.map { dependency ->
-                                            Preference(context).apply {
-                                                title = dependency
-                                                intent = context
-                                                        .intentFor<LicenseActivity>(
-                                                                INTENT_EXTRA_KEY_DEPENDENCY to dependency,
-                                                                INTENT_EXTRA_KEY_LICENSE to licenses.license
-                                                        )
-                                                        .setPackage(getString(R.string.app_id))
-                                            }
-                                        }
-                                    }
-                                    ?.sortedBy { it.title.toString().toLowerCase() }
-                                    ?.forEach { addPreference(it) }
-                        } catch (e: Exception) {
-                            Timber.e(e)
-                            context
-                                    .alert(getString(R.string.dialog_licenses_error_content)) {
-                                        isCancelable = false
-                                        okButton {
-                                            getString(android.R.string.ok)
-                                            activity?.finish()
-                                        }
-                                    }
-                                    .show()
-                        }
+                                }
+                            }
+                            ?.sortedBy { it.title.toString().toLowerCase() }
+                            ?.forEach { addPreference(it) }
+                    } catch (e: Exception) {
+                        Timber.e(e)
+                        context
+                            .alert(getString(R.string.dialog_licenses_error_content)) {
+                                isCancelable = false
+                                okButton {
+                                    getString(android.R.string.ok)
+                                    activity?.finish()
+                                }
+                            }
+                            .show()
                     }
+                }
 
             return navigateToPreferenceScreen(preferenceScreen)
         }
@@ -117,7 +117,7 @@ class SettingsActivity : AppCompatActivity() {
         override fun getCallbackFragment() = this
 
         fun onBackPressed() =
-                navigateToPreferenceScreen((preferenceScreen?.parent as? PreferenceScreen))
+            navigateToPreferenceScreen((preferenceScreen?.parent as? PreferenceScreen))
 
         private fun navigateToPreferenceScreen(preferenceScreen: PreferenceScreen?): Boolean {
             if (preferenceScreen == null)
@@ -129,8 +129,8 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         data class ThirdPartyLicenses(
-                val dependencies: List<String>,
-                val license: String
+            val dependencies: List<String>,
+            val license: String
         )
     }
 }

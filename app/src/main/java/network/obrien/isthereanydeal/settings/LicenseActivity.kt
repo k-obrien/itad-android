@@ -19,10 +19,10 @@
 package network.obrien.isthereanydeal.settings
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import android.webkit.WebChromeClient
 import android.webkit.WebView
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_license.*
 import network.obrien.isthereanydeal.R
 
