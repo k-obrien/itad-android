@@ -19,18 +19,18 @@
 package network.obrien.isthereanydeal.settings
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.preference.Preference
-import android.support.v7.preference.PreferenceFragmentCompat
-import android.support.v7.preference.PreferenceScreen
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceScreen
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_settings.*
 import network.obrien.isthereanydeal.R
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.okButton
-import org.jetbrains.anko.support.v4.alert
 import timber.log.Timber
 
 class SettingsActivity : AppCompatActivity() {
@@ -99,13 +99,15 @@ class SettingsActivity : AppCompatActivity() {
                                     ?.forEach { addPreference(it) }
                         } catch (e: Exception) {
                             Timber.e(e)
-                            alert(getString(R.string.dialog_licenses_error_content)) {
-                                isCancelable = false
-                                okButton {
-                                    getString(android.R.string.ok)
-                                    activity?.finish()
-                                }
-                            }.show()
+                            context
+                                    .alert(getString(R.string.dialog_licenses_error_content)) {
+                                        isCancelable = false
+                                        okButton {
+                                            getString(android.R.string.ok)
+                                            activity?.finish()
+                                        }
+                                    }
+                                    .show()
                         }
                     }
 
