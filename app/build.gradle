@@ -60,15 +60,6 @@ android {
 dependencies {
     implementation fileTree(include: ["*.jar"], dir: "libs")
 
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
-
-    // Anko
-    implementation "org.jetbrains.anko:anko:${versions.anko}"
-
-    // Third party licensing
-    debugImplementation "com.google.android.gms:play-services-oss-licenses:${versions.play_services_oss_licenses}"
-
     // AndroidX
     implementation "androidx.appcompat:appcompat:${versions.androidx.appcompat}"
     implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintlayout}"
@@ -82,8 +73,14 @@ dependencies {
     implementation "androidx.core:core-ktx:${versions.androidx.ktx_core}"
     implementation "androidx.fragment:fragment-ktx:${versions.androidx.ktx_fragment}"
 
-    // Timber
-    implementation "com.jakewharton.timber:timber:${versions.timber}"
+    // Material
+    implementation "com.google.android.material:material:${versions.material}"
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+
+    // Anko
+    implementation "org.jetbrains.anko:anko:${versions.anko}"
 
     // Dagger
     implementation "com.google.dagger:dagger:${versions.dagger}"
@@ -101,6 +98,12 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
+
+    // Third party licensing
+    debugImplementation "com.google.android.gms:play-services-oss-licenses:${versions.play_services_oss_licenses}"
 
     // Testing
     testImplementation "junit:junit:${versions.junit}"
