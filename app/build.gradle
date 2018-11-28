@@ -20,6 +20,7 @@ apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
 apply plugin: "kotlin-kapt"
+apply plugin: "androidx.navigation.safeargs"
 apply plugin: "com.google.gms.oss.licenses.plugin"
 
 android {
@@ -66,15 +67,16 @@ dependencies {
     implementation "androidx.legacy:legacy-preference-v14:${versions.androidx.legacy_preference_v14}"
     implementation "androidx.legacy:legacy-support-v4:${versions.androidx.legacy_support_v4}"
     implementation "androidx.preference:preference:${versions.androidx.preference}"
-    implementation "com.google.android.material:material:${versions.androidx.material}"
-
-    // KTX
     implementation "androidx.collection:collection-ktx:${versions.androidx.ktx_collection}"
     implementation "androidx.core:core-ktx:${versions.androidx.ktx_core}"
     implementation "androidx.fragment:fragment-ktx:${versions.androidx.ktx_fragment}"
 
     // Material
     implementation "com.google.android.material:material:${versions.material}"
+
+    // Navigation Architecture Component
+    implementation "android.arch.navigation:navigation-fragment-ktx:${versions.navigation}"
+    implementation "android.arch.navigation:navigation-ui-ktx:${versions.navigation}"
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
@@ -107,7 +109,8 @@ dependencies {
 
     // Testing
     testImplementation "junit:junit:${versions.junit}"
-    androidTestImplementation "androidx.test.ext:junit:${versions.androidx.junit}"
     androidTestImplementation "androidx.test:runner:${versions.androidx.test_runner}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${versions.androidx.espresso}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.androidx.junit}"
+    androidTestImplementation "android.arch.navigation:navigation-testing-ktx:${versions.navigation_testing}"
 }
