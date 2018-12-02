@@ -25,8 +25,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_placeholder.view.*
 import network.obrien.isthereanydeal.settings.SettingsActivity
-import org.jetbrains.anko.startActivity
-import timber.log.Timber
+import network.obrien.isthereanydeal.util.transitionToActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
 
         if (id == R.id.action_settings) {
-            startActivity<SettingsActivity>()
+            transitionToActivity<SettingsActivity>()
             return true
         }
 
