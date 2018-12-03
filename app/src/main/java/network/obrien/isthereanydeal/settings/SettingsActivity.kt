@@ -41,15 +41,13 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                return true
-            }
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            onBackPressed()
+            true
         }
 
-        return super.onOptionsItemSelected(item)
+        else -> super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {
@@ -75,7 +73,9 @@ class SettingsActivity : AppCompatActivity() {
                     try {
                         resources.assets
                             .open(getString(R.string.preference_licenses_url))
-                            .use { input -> input.bufferedReader().use { reader -> reader.readText() } }
+                            .use { input ->
+                                input.bufferedReader().use { reader -> reader.readText() }
+                            }
                             .let { json ->
                                 Gson().fromJson<List<ThirdPartyLicenses>>(
                                     json,
@@ -120,15 +120,14 @@ class SettingsActivity : AppCompatActivity() {
             navigateToPreferenceScreen((preferenceScreen?.parent as? PreferenceScreen))
 
         private fun navigateToPreferenceScreen(preferenceScreen: PreferenceScreen?): Boolean {
-            if (preferenceScreen == null)
-                return false
+            if (preferenceScreen == null) return false
 
             this.preferenceScreen = preferenceScreen
             (activity as? SettingsActivity)?.supportActionBar?.title = preferenceScreen.title
             return true
         }
 
-        data class ThirdPartyLicenses(
+        private data class ThirdPartyLicenses(
             val dependencies: List<String>,
             val license: String
         )
