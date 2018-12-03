@@ -36,13 +36,15 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        tabs.setupWithViewPager(view_pager)
         view_pager.adapter = SectionsPagerAdapter(requireFragmentManager())
     }
 
-    inner class SectionsPagerAdapter(fm: FragmentManager) :
-        FragmentPagerAdapter(fm) {
+    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         override fun getItem(position: Int) =
             MainActivity.PlaceholderFragment.newInstance(position + 1)
+
+        override fun getPageTitle(position: Int): CharSequence? = "Tab ${position + 1}"
 
         override fun getCount() = 3
     }
