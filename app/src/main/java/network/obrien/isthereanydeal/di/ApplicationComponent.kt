@@ -16,23 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal
+package network.obrien.isthereanydeal.di
 
+import android.app.Application
+import dagger.BindsInstance
+import dagger.Component
+import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
-import network.obrien.isthereanydeal.di.DaggerApplicationComponent
-import timber.log.Timber
-import timber.log.Timber.DebugTree
+import network.obrien.isthereanydeal.ItadApplication
+import javax.inject.Singleton
 
-class ItadApplication : DaggerApplication() {
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
-        DaggerApplicationComponent.builder().application(this).build()
+@Singleton
+@Component(
+    modules = [
+        AndroidInjectionModule::class,
+        ApplicationModule::class,
+        MainActivityModule::class
+    ]
+)
+interface ApplicationComponent : AndroidInjector<ItadApplication> {
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: Application): Builder
 
-    override fun onCreate() {
-        super.onCreate()
-
-        if (BuildConfig.DEBUG) {
-            Timber.plant(DebugTree())
-        }
+        fun build(): ApplicationComponent
     }
 }
