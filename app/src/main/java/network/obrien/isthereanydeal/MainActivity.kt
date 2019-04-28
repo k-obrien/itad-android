@@ -19,11 +19,9 @@
 package network.obrien.isthereanydeal
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.app.AppCompatActivity
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import network.obrien.isthereanydeal.settings.SettingsActivity
 import org.jetbrains.anko.startActivity
@@ -31,12 +29,12 @@ import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     /**
-     * The [android.support.v4.view.PagerAdapter] that will provide
+     * The [androidx.viewpager.widget.PagerAdapter] that will provide
      * fragments for each of the sections. We use a
      * {@link FragmentPagerAdapter} derivative, which will keep every
      * loaded fragment in memory. If this becomes too memory intensive, it
      * may be best to switch to a
-     * [android.support.v4.app.FragmentStatePagerAdapter].
+     * [androidx.viewpager.widget.PagerAdapter].
      */
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
@@ -77,8 +75,9 @@ class MainActivity : AppCompatActivity() {
      * A [FragmentPagerAdapter] that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-        override fun getItem(position: Int): Fragment {
+    inner class SectionsPagerAdapter(fm: androidx.fragment.app.FragmentManager) :
+        androidx.fragment.app.FragmentPagerAdapter(fm) {
+        override fun getItem(position: Int): androidx.fragment.app.Fragment {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1)
@@ -93,9 +92,11 @@ class MainActivity : AppCompatActivity() {
     /**
      * A placeholder fragment containing a simple view.
      */
-    class PlaceholderFragment : Fragment() {
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                  savedInstanceState: Bundle?): View? {
+    class PlaceholderFragment : androidx.fragment.app.Fragment() {
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
             Timber.d("Section number argument: %s", arguments?.getInt(ARG_SECTION_NUMBER))
             return inflater.inflate(R.layout.fragment_main, container, false)
         }

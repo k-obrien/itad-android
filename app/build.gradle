@@ -31,14 +31,14 @@ android {
         targetSdkVersion buildConfig.targetSdk
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro",
-                    "proguard-retrofit-rules.pro", "proguard-okio-rules.pro"
+                    "proguard-okhttp-rules.pro", "proguard-okio-rules.pro", "proguard-retrofit-rules.pro"
             resValue "string", "app_id", "${defaultConfig.applicationId}"
             resValue "string", "app_version", "${defaultConfig.versionName}"
         }
@@ -60,25 +60,27 @@ android {
 dependencies {
     implementation fileTree(include: ["*.jar"], dir: "libs")
 
+    // AndroidX
+    implementation "androidx.appcompat:appcompat:${versions.androidx.appcompat}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintlayout}"
+    implementation "androidx.legacy:legacy-preference-v14:${versions.androidx.legacy_preference_v14}"
+    implementation "androidx.legacy:legacy-support-v4:${versions.androidx.legacy_support_v4}"
+    implementation "androidx.preference:preference:${versions.androidx.preference}"
+    implementation "com.google.android.material:material:${versions.androidx.material}"
+
+    // KTX
+    implementation "androidx.collection:collection-ktx:${versions.androidx.ktx_collection}"
+    implementation "androidx.core:core-ktx:${versions.androidx.ktx_core}"
+    implementation "androidx.fragment:fragment-ktx:${versions.androidx.ktx_fragment}"
+
+    // Material
+    implementation "com.google.android.material:material:${versions.material}"
+
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
 
     // Anko
     implementation "org.jetbrains.anko:anko:${versions.anko}"
-
-    // Third party licensing
-    debugImplementation "com.google.android.gms:play-services-oss-licenses:${versions.play_services_oss_licenses}"
-
-    // Support
-    implementation "com.android.support:appcompat-v7:${versions.android_support.appcompat_v7}"
-    implementation "com.android.support.constraint:constraint-layout:${versions.android_support.constraint_layout}"
-    implementation "com.android.support:design:${versions.android_support.design}"
-    implementation "com.android.support:preference-v7:${versions.android_support.preference_v7}"
-    implementation "com.android.support:preference-v14:${versions.android_support.preference_v14}"
-    implementation "com.android.support:support-v4:${versions.android_support.support_v4}"
-
-    // Timber
-    implementation "com.jakewharton.timber:timber:${versions.timber}"
 
     // Dagger
     implementation "com.google.dagger:dagger:${versions.dagger}"
@@ -97,8 +99,15 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
     implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
 
+    // Timber
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
+
+    // Third party licensing
+    debugImplementation "com.google.android.gms:play-services-oss-licenses:${versions.play_services_oss_licenses}"
+
     // Testing
     testImplementation "junit:junit:${versions.junit}"
-    androidTestImplementation "com.android.support.test:runner:${versions.android_support.test_runner}"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.android_support.espresso}"
+    androidTestImplementation "androidx.test.ext:junit:${versions.androidx.junit}"
+    androidTestImplementation "androidx.test:runner:${versions.androidx.test_runner}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.androidx.espresso}"
 }
