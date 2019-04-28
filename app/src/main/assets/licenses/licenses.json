@@ -1,0 +1,201 @@
+[
+  {
+    "dependencies": [
+      "net.sf.jopt-simple:jopt-simple",
+      "net.sf.kxml:kxml2",
+      "org.bouncycastle:bcpkix-jdk15on",
+      "org.bouncycastle:bcprov-jdk15on",
+      "org.checkerframework:checker-compat-qual",
+      "org.codehaus.mojo:animal-sniffer-annotations"
+    ],
+    "license": "mit"
+  },
+  {
+    "dependencies": [
+      "com.google.protobuf:protobuf-java",
+      "JSR 305",
+      "org.antlr:antlr4",
+      "org.ow2.asm:asm",
+      "org.ow2.asm:asm-analysis",
+      "org.ow2.asm:asm-commons",
+      "org.ow2.asm:asm-tree",
+      "org.ow2.asm:asm-util",
+      "Protobuf Nano"
+    ],
+    "license": "bsd-3-clause"
+  },
+  {
+    "dependencies": [
+      "STL"
+    ],
+    "license": "sgi-stl"
+  },
+  {
+    "dependencies": [
+      "org.reactivestreams:reactive-streams"
+    ],
+    "license": "cc0-1.0"
+  },
+  {
+    "dependencies": [
+      "com.sun.activation:javax.activation",
+      "com.sun.istack:istack-commons-runtime",
+      "javax.annotation:jsr250-api",
+      "javax.xml.bind:jaxb-api",
+      "org.glassfish.jaxb:jaxb-core",
+      "org.glassfish.jaxb:jaxb-runtime",
+      "org.glassfish.jaxb:txw2",
+      "org.jvnet.staxex:stax-ex"
+    ],
+    "license": "java-ee"
+  },
+  {
+    "dependencies": [
+      "com.googlecode.juniversalchardet:juniversalchardet"
+    ],
+    "license": "mpl-1.1"
+  },
+  {
+    "dependencies": [
+      "com.google.errorprone:javac-shaded"
+    ],
+    "license": "gpl-2.0-ce"
+  },
+  {
+    "dependencies": [
+      "org.jetbrains.trove4j:trove4j"
+    ],
+    "license": "lgpl-2.1"
+  },
+  {
+    "dependencies": [
+      "com.google.android.gms:play-services-basement",
+      "com.google.android.gms:play-services-oss-licenses"
+    ],
+    "license": "android-sdk"
+  },
+  {
+    "dependencies": [
+      "JSR 250",
+      "absl",
+      "android.arch.core:common",
+      "android.arch.core:runtime",
+      "android.arch.lifecycle:common",
+      "android.arch.lifecycle:livedata-core",
+      "android.arch.lifecycle:runtime",
+      "android.arch.lifecycle:viewmodel",
+      "com.android.databinding:adapters",
+      "com.android.databinding:baseLibrary",
+      "com.android.databinding:compiler",
+      "com.android.databinding:compilerCommon",
+      "com.android.databinding:library",
+      "com.android.support.constraint:constraint-layout",
+      "com.android.support.constraint:constraint-layout-solver",
+      "com.android.support:animated-vector-drawable",
+      "com.android.support:appcompat-v7",
+      "com.android.support:design",
+      "com.android.support:preference-v7",
+      "com.android.support:preference-v14",
+      "com.android.support:recyclerview-v7",
+      "com.android.support:support-annotations",
+      "com.android.support:support-compat",
+      "com.android.support:support-core-ui",
+      "com.android.support:support-core-utils",
+      "com.android.support:support-fragment",
+      "com.android.support:support-media-compat",
+      "com.android.support:support-v4",
+      "com.android.support:support-vector-drawable",
+      "com.android.support:transition",
+      "com.android.tools.analytics-library:protos",
+      "com.android.tools.analytics-library:shared",
+      "com.android.tools.analytics-library:tracker",
+      "com.android.tools.build:apksig",
+      "com.android.tools.build:builder",
+      "com.android.tools.build:builder-model",
+      "com.android.tools.build:builder-test-api",
+      "com.android.tools.build:gradle-api",
+      "com.android.tools.build:manifest-merger",
+      "com.android.tools.ddms:ddmlib",
+      "com.android.tools.external.com-intellij:intellij-core",
+      "com.android.tools.external.com-intellij:kotlin-compiler",
+      "com.android.tools.external.org-jetbrains:uast",
+      "com.android.tools.layoutlib:layoutlib-api",
+      "com.android.tools.lint:lint",
+      "com.android.tools.lint:lint-api",
+      "com.android.tools.lint:lint-checks",
+      "com.android.tools.lint:lint-gradle",
+      "com.android.tools.lint:lint-gradle-api",
+      "com.android.tools.lint:lint-kotlin",
+      "com.android.tools:annotations",
+      "com.android.tools:common",
+      "com.android.tools:dvlib",
+      "com.android.tools:repository",
+      "com.android.tools:sdk-common",
+      "com.android.tools:sdklib",
+      "com.google.code.findbugs:jsr305",
+      "com.google.code.gson:gson",
+      "com.google.dagger:dagger",
+      "com.google.dagger:dagger-android",
+      "com.google.dagger:dagger-android-jarimpl",
+      "com.google.dagger:dagger-android-processor",
+      "com.google.dagger:dagger-android-support",
+      "com.google.dagger:dagger-android-support-jarimpl",
+      "com.google.dagger:dagger-compiler",
+      "com.google.dagger:dagger-producers",
+      "com.google.dagger:dagger-spi",
+      "com.google.errorprone:error_prone_annotations",
+      "com.google.googlejavaformat:google-java-format",
+      "com.google.guava:guava",
+      "com.google.j2objc:j2objc-annotations",
+      "com.google.jimfs:jimfs",
+      "com.googlecode.json-simple:json-simple",
+      "com.jakewharton.timber:timber",
+      "com.squareup.okhttp3:logging-interceptor",
+      "com.squareup.okhttp3:okhttp",
+      "com.squareup.okio:okio",
+      "com.squareup.retrofit2:adapter-rxjava2",
+      "com.squareup.retrofit2:converter-gson",
+      "com.squareup.retrofit2:retrofit",
+      "com.squareup:javapoet",
+      "com.squareup:javawriter",
+      "com.sun.xml.fastinfoset:FastInfoset",
+      "commons-codec:commons-codec",
+      "commons-io:commons-io",
+      "commons-logging:commons-logging",
+      "flatbuffers",
+      "io.reactivex.rxjava2:rxandroid",
+      "io.reactivex.rxjava2:rxjava",
+      "it.unimi.dsi:fastutil",
+      "javax.inject:javax.inject",
+      "org.apache.commons:commons-compress",
+      "org.apache.httpcomponents:httpclient",
+      "org.apache.httpcomponents:httpcore",
+      "org.apache.httpcomponents:httpmime",
+      "org.codehaus.groovy:groovy-all",
+      "org.jetbrains.anko:anko",
+      "org.jetbrains.anko:anko-appcompat-v7",
+      "org.jetbrains.anko:anko-appcompat-v7-commons",
+      "org.jetbrains.anko:anko-appcompat-v7-coroutines",
+      "org.jetbrains.anko:anko-commons",
+      "org.jetbrains.anko:anko-coroutines",
+      "org.jetbrains.anko:anko-sdk25",
+      "org.jetbrains.anko:anko-sdk25-coroutines",
+      "org.jetbrains.anko:anko-sqlite",
+      "org.jetbrains.anko:anko-support-v4",
+      "org.jetbrains.anko:anko-support-v4-commons",
+      "org.jetbrains.kotlin:kotlin-annotation-processing-gradle",
+      "org.jetbrains.kotlin:kotlin-compiler-embeddable",
+      "org.jetbrains.kotlin:kotlin-reflect",
+      "org.jetbrains.kotlin:kotlin-script-runtime",
+      "org.jetbrains.kotlin:kotlin-stdlib",
+      "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+      "org.jetbrains.kotlin:kotlin-stdlib-jre7",
+      "org.jetbrains.kotlin:kotlin-stdlib-jre8",
+      "org.jetbrains.kotlinx:kotlinx-coroutines-android",
+      "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+      "org.jetbrains:annotations",
+      "safeparcel"
+    ],
+    "license": "apache-2.0"
+  }
+]

@@ -1,5 +1,5 @@
 /*
- * IsThereAnyDeal Android
+ * ITAD Android
  * Copyright (C) 2018-present  Kieran O'Brien
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,95 +17,88 @@
  */
 
 apply plugin: "com.android.application"
-
 apply plugin: "kotlin-android"
-
 apply plugin: "kotlin-android-extensions"
-
 apply plugin: "kotlin-kapt"
-
 apply plugin: "com.google.gms.oss.licenses.plugin"
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion buildConfig.compileSdk
+
     defaultConfig {
         applicationId "network.obrien.isthereanydeal"
-        minSdkVersion 21
-        targetSdkVersion 27
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro",
                     "proguard-retrofit-rules.pro", "proguard-okio-rules.pro"
+            resValue "string", "app_id", "${defaultConfig.applicationId}"
+            resValue "string", "app_version", "${defaultConfig.versionName}"
         }
+
         debug {
-            applicationIdSuffix ".debug"
             debuggable true
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+            resValue "string", "app_id", "${defaultConfig.applicationId}${applicationIdSuffix}"
+            resValue "string", "app_version", "${defaultConfig.versionName}${versionNameSuffix}"
         }
     }
+
     dataBinding {
         enabled = true
     }
 }
+
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ["*.jar"], dir: "libs")
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+
+    // Anko
+    implementation "org.jetbrains.anko:anko:${versions.anko}"
 
     // Third party licensing
-    def play_services_oss_licenses_version = "15.0.1"
-    implementation "com.google.android.gms:play-services-oss-licenses:$play_services_oss_licenses_version"
+    debugImplementation "com.google.android.gms:play-services-oss-licenses:${versions.play_services_oss_licenses}"
 
     // Support
-    def appcompat_version = "27.1.1"
-    implementation "com.android.support:appcompat-v7:$appcompat_version"
-    implementation "com.android.support:design:$appcompat_version"
-
-    // Constraint layout
-    def constraint_layout_version = "1.1.0"
-    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
+    implementation "com.android.support:appcompat-v7:${versions.android_support.appcompat_v7}"
+    implementation "com.android.support.constraint:constraint-layout:${versions.android_support.constraint_layout}"
+    implementation "com.android.support:design:${versions.android_support.design}"
+    implementation "com.android.support:preference-v7:${versions.android_support.preference_v7}"
+    implementation "com.android.support:preference-v14:${versions.android_support.preference_v14}"
+    implementation "com.android.support:support-v4:${versions.android_support.support_v4}"
 
     // Timber
-    def timber_version = "4.7.0"
-    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
 
     // Dagger
-    def dagger_version = "2.16"
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-
-    implementation "com.google.dagger:dagger-android:$dagger_version"
-    implementation "com.google.dagger:dagger-android-support:$dagger_version"
-    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+    implementation "com.google.dagger:dagger:${versions.dagger}"
+    implementation "com.google.dagger:dagger-android:${versions.dagger}"
+    implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
 
     // RxJava
-    def rxjava_version = "2.1.13"
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-
-    def rxandroid_version = "2.0.2"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
+    implementation "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
 
     // Retrofit
-    def retrofit_version = "2.4.0"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    def okhttp_version = "3.10.0"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
 
     // Testing
-    def junit_version = "4.12"
-    testImplementation "junit:junit:$junit_version"
-
-    def runner_version = "1.0.2"
-    androidTestImplementation "com.android.support.test:runner:$runner_version"
-
-    def espresso_version = "3.0.2"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    testImplementation "junit:junit:${versions.junit}"
+    androidTestImplementation "com.android.support.test:runner:${versions.android_support.test_runner}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.android_support.espresso}"
 }

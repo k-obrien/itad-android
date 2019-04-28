@@ -1,5 +1,5 @@
 /*
- * IsThereAnyDeal Android
+ * ITAD Android
  * Copyright (C) 2018-present  Kieran O'Brien
  *
  * This program is free software: you can redistribute it and/or modify
@@ -18,20 +18,18 @@
 
 package network.obrien.isthereanydeal
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
 import android.view.*
-import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import network.obrien.isthereanydeal.settings.SettingsActivity
+import org.jetbrains.anko.startActivity
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
-
     /**
      * The [android.support.v4.view.PagerAdapter] that will provide
      * fragments for each of the sections. We use a
@@ -45,22 +43,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setSupportActionBar(toolbar)
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
 
         // Set up the ViewPager with the sections adapter.
         container.adapter = mSectionsPagerAdapter
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, getString(R.string.text_snackbar_open_source_licenses), Snackbar.LENGTH_LONG)
-                    .setAction(getString(R.string.text_action_snackbar_open_source_licenses), {
-                        startActivity(Intent(this, OssLicensesMenuActivity::class.java))
-                    }).show()
-        }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -76,12 +66,12 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
 
         if (id == R.id.action_settings) {
+            startActivity<SettingsActivity>()
             return true
         }
 
         return super.onOptionsItemSelected(item)
     }
-
 
     /**
      * A [FragmentPagerAdapter] that returns a fragment corresponding to

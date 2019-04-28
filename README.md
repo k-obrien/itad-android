@@ -1,6 +1,6 @@
-# IsThereAnyDeal Android
+# ITAD Android
 
-A native Android client for the excellent game price alerting website isthereanydeal.com.
+A native Android client for the excellent game price alerting website IsThereAnyDeal.com.
 
 ## LICENSE
 

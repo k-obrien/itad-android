@@ -1,0 +1,32 @@
+html {
+    font-family: monospace
+}
+
+p.centered {
+    text-align: center;
+}
+
+p.margin-start-2em {
+    margin-inline-start: 2em;
+}
+
+p.margin-start-4em {
+    margin-inline-start: 4em;
+}
+
+p.indent-1em {
+    text-indent: 1em;
+}
+
+p.indent-2em {
+    text-indent: 2em;
+}
+
+ol.outdented {
+    margin-inline-start: -1em;
+}
+
+hr { 
+    border: 0;
+    border-top: 2px dashed black;
+}
