@@ -1,0 +1,120 @@
+/*
+ * ITAD Android
+ * Copyright (C) 2018-present  Kieran O'Brien
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+def versions = [:]
+versions.junit = "4.12"
+versions.timber = "4.7.1"
+versions.versions = "0.21.0"
+
+versions.android = [:]
+versions.android.gradle_plugin = "3.4.0"
+
+versions.android.support = [:]
+versions.android.support.appcompat = "1.0.2"
+versions.android.support.collection_ktx = "1.0.0"
+versions.android.support.constraintlayout = "1.1.3"
+versions.android.support.core_ktx = "1.0.1"
+versions.android.support.fragment_ktx = "1.0.0"
+versions.android.support.navigation = "2.0.0"
+versions.android.support.preference = "1.0.0"
+
+versions.android.support.testing = [:]
+versions.android.support.testing.espresso = "3.1.1"
+versions.android.support.testing.junit = "1.1.0"
+versions.android.support.testing.test_runner = "1.1.1"
+
+versions.google = [:]
+versions.google.dagger = "2.22.1"
+versions.google.material = "1.0.0"
+
+versions.google.licenses = [:]
+versions.google.licenses.gradle_plugin = "0.9.4"
+versions.google.licenses.licenses = "16.0.2"
+
+versions.jetbrains = [:]
+versions.jetbrains.anko = "0.10.8"
+versions.jetbrains.kotlin = "1.3.31"
+
+versions.squareup = [:]
+versions.squareup.okhttp = "3.14.1"
+versions.squareup.retrofit = "2.5.0"
+
+
+ext.libraries = [:]
+ext.libraries.junit = "junit:junit:${versions.junit}"
+ext.libraries.timber = "com.jakewharton.timber:timber:${versions.timber}"
+ext.libraries.versions = "com.github.ben-manes:gradle-versions-plugin:${versions.versions}"
+
+ext.libraries.android = [:]
+ext.libraries.android.gradle_plugin = "com.android.tools.build:gradle:${versions.android.gradle_plugin}"
+
+ext.libraries.android.support = [:]
+ext.libraries.android.support.appcompat = "androidx.appcompat:appcompat:${versions.android.support.appcompat}"
+ext.libraries.android.support.collection_ktx = "androidx.collection:collection-ktx:${versions.android.support.collection_ktx}"
+ext.libraries.android.support.constraintlayout = "androidx.constraintlayout:constraintlayout:${versions.android.support.constraintlayout}"
+ext.libraries.android.support.core_ktx = "androidx.core:core-ktx:${versions.android.support.core_ktx}"
+ext.libraries.android.support.fragment_ktx = "androidx.fragment:fragment-ktx:${versions.android.support.fragment_ktx}"
+ext.libraries.android.support.preference = "androidx.preference:preference:${versions.android.support.preference}"
+
+ext.libraries.android.support.navigation = [:]
+ext.libraries.android.support.navigation.fragment = "androidx.navigation:navigation-fragment-ktx:${versions.android.support.navigation}"
+ext.libraries.android.support.navigation.ui = "androidx.navigation:navigation-ui-ktx:${versions.android.support.navigation}"
+ext.libraries.android.support.navigation.safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.android.support.navigation}"
+
+ext.libraries.android.support.testing = [:]
+ext.libraries.android.support.testing.espresso = "androidx.test.espresso:espresso-core:${versions.android.support.testing.espresso}"
+ext.libraries.android.support.testing.junit = "androidx.test.ext:junit:${versions.android.support.testing.junit}"
+ext.libraries.android.support.testing.test_runner = "androidx.test:runner:${versions.android.support.testing.test_runner}"
+
+ext.libraries.google = [:]
+ext.libraries.google.material = "com.google.android.material:material:${versions.google.material}"
+
+ext.libraries.google.dagger = [:]
+ext.libraries.google.dagger.dagger = "com.google.dagger:dagger:${versions.google.dagger}"
+ext.libraries.google.dagger.android_support = "com.google.dagger:dagger-android-support:${versions.google.dagger}"
+ext.libraries.google.dagger.compiler = "com.google.dagger:dagger-compiler:${versions.google.dagger}"
+ext.libraries.google.dagger.android_processor = "com.google.dagger:dagger-android-processor:${versions.google.dagger}"
+
+ext.libraries.google.licenses = [:]
+ext.libraries.google.licenses.gradle_plugin = "com.google.android.gms:oss-licenses-plugin:${versions.google.licenses.gradle_plugin}"
+ext.libraries.google.licenses.licenses = "com.google.android.gms:play-services-oss-licenses:${versions.google.licenses.licenses}"
+
+ext.libraries.jetbrains = [:]
+ext.libraries.jetbrains.anko = "org.jetbrains.anko:anko:${versions.jetbrains.anko}"
+
+ext.libraries.jetbrains.kotlin = [:]
+ext.libraries.jetbrains.kotlin.gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.jetbrains.kotlin}"
+ext.libraries.jetbrains.kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.jetbrains.kotlin}"
+
+ext.libraries.squareup = [:]
+
+ext.libraries.squareup.okhttp = [:]
+ext.libraries.squareup.okhttp.okhttp = "com.squareup.okhttp3:okhttp:${versions.squareup.okhttp}"
+ext.libraries.squareup.okhttp.logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.squareup.okhttp}"
+
+ext.libraries.squareup.retrofit = [:]
+ext.libraries.squareup.retrofit.retrofit = "com.squareup.retrofit2:retrofit:${versions.squareup.retrofit}"
+ext.libraries.squareup.retrofit.gson_converter = "com.squareup.retrofit2:converter-gson:${versions.squareup.retrofit}"
+
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+}
+
+ext.addRepos = this.&addRepos

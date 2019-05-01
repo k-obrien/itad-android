@@ -20,8 +20,8 @@ apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
 apply plugin: "kotlin-kapt"
-apply plugin: "androidx.navigation.safeargs"
-apply plugin: "com.google.gms.oss.licenses.plugin"
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "com.google.android.gms.oss-licenses-plugin"
 
 android {
     compileSdkVersion buildConfig.compileSdk
@@ -48,67 +48,57 @@ android {
             debuggable true
             applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
-            resValue "string", "app_id", "${defaultConfig.applicationId}${applicationIdSuffix}"
-            resValue "string", "app_version", "${defaultConfig.versionName}${versionNameSuffix}"
+            resValue "string", "app_id", "${defaultConfig.applicationId}$applicationIdSuffix"
+            resValue "string", "app_version", "${defaultConfig.versionName}$versionNameSuffix"
         }
     }
 
     dataBinding {
         enabled = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(include: ["*.jar"], dir: "libs")
 
-    // AndroidX
-    implementation "androidx.appcompat:appcompat:${versions.androidx.appcompat}"
-    implementation "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintlayout}"
-    implementation "androidx.preference:preference:${versions.androidx.preference}"
-    implementation "androidx.collection:collection-ktx:${versions.androidx.ktx_collection}"
-    implementation "androidx.core:core-ktx:${versions.androidx.ktx_core}"
-    implementation "androidx.fragment:fragment-ktx:${versions.androidx.ktx_fragment}"
+    implementation libraries.android.support.appcompat
+    implementation libraries.android.support.collection_ktx
+    implementation libraries.android.support.constraintlayout
+    implementation libraries.android.support.core_ktx
+    implementation libraries.android.support.fragment_ktx
+    implementation libraries.android.support.preference
 
-    // Material
-    implementation "com.google.android.material:material:${versions.material}"
+    implementation libraries.android.support.navigation.fragment
+    implementation libraries.android.support.navigation.ui
 
-    // Navigation Architecture Component
-    implementation "android.arch.navigation:navigation-fragment-ktx:${versions.navigation}"
-    implementation "android.arch.navigation:navigation-ui-ktx:${versions.navigation}"
+    implementation libraries.google.material
 
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+    implementation libraries.jetbrains.kotlin.stdlib
 
-    // Anko
-    implementation "org.jetbrains.anko:anko:${versions.anko}"
+    implementation libraries.jetbrains.anko
 
-    // Dagger
-    implementation "com.google.dagger:dagger:${versions.dagger}"
-    implementation "com.google.dagger:dagger-android:${versions.dagger}"
-    implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
-    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
-    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
+    implementation libraries.google.dagger.dagger
+    implementation libraries.google.dagger.android_support
+    kapt libraries.google.dagger.compiler
+    kapt libraries.google.dagger.android_processor
 
-    // RxJava
-    implementation "io.reactivex.rxjava2:rxjava:${versions.rxjava}"
-    implementation "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
+    implementation libraries.squareup.okhttp.okhttp
+    implementation libraries.squareup.okhttp.logging_interceptor
 
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
-    implementation "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
-    implementation "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
+    implementation libraries.squareup.retrofit.retrofit
+    implementation libraries.squareup.retrofit.gson_converter
 
-    // Timber
-    implementation "com.jakewharton.timber:timber:${versions.timber}"
+    implementation libraries.timber
 
-    // Third party licensing
-    debugImplementation "com.google.android.gms:play-services-oss-licenses:${versions.play_services_oss_licenses}"
+    debugImplementation libraries.google.licenses.licenses
 
-    // Testing
-    testImplementation "junit:junit:${versions.junit}"
-    androidTestImplementation "androidx.test:runner:${versions.androidx.test_runner}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${versions.androidx.espresso}"
-    androidTestImplementation "androidx.test.ext:junit:${versions.androidx.junit}"
-    androidTestImplementation "android.arch.navigation:navigation-testing-ktx:${versions.navigation_testing}"
+    testImplementation libraries.junit
+    androidTestImplementation libraries.android.support.testing.test_runner
+    androidTestImplementation libraries.android.support.testing.espresso
+    androidTestImplementation libraries.android.support.testing.junit
 }
