@@ -18,7 +18,7 @@
 
 package network.obrien.isthereanydeal.di
 
-import android.app.Application
+import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -27,19 +27,10 @@ import network.obrien.isthereanydeal.ItadApplication
 import javax.inject.Singleton
 
 @Singleton
-@Component(
-    modules = [
-        AndroidInjectionModule::class,
-        ApplicationModule::class,
-        MainActivityModule::class
-    ]
-)
+@Component(modules = [AndroidInjectionModule::class, ApplicationModule::class, MainActivityModule::class])
 interface ApplicationComponent : AndroidInjector<ItadApplication> {
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        fun application(application: Application): Builder
-
-        fun build(): ApplicationComponent
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance applicationContext: Context): ApplicationComponent
     }
 }

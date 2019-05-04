@@ -26,7 +26,7 @@ import timber.log.Timber.DebugTree
 
 class ItadApplication : DaggerApplication() {
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
-        DaggerApplicationComponent.builder().application(this).build()
+        DaggerApplicationComponent.factory().create(this)
 
     override fun onCreate() {
         super.onCreate()
