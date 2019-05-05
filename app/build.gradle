@@ -66,39 +66,42 @@ android {
 dependencies {
     implementation fileTree(include: ["*.jar"], dir: "libs")
 
-    implementation libraries.android.support.appcompat
-    implementation libraries.android.support.collection_ktx
-    implementation libraries.android.support.constraintlayout
-    implementation libraries.android.support.core_ktx
-    implementation libraries.android.support.fragment_ktx
-    implementation libraries.android.support.preference
+    implementation libraries.androidx.appcompat
+    implementation libraries.androidx.collection
+    implementation libraries.androidx.constraintlayout
+    implementation libraries.androidx.core
+    implementation libraries.androidx.fragment
+    implementation libraries.androidx.preference
 
-    implementation libraries.android.support.navigation.fragment
-    implementation libraries.android.support.navigation.ui
+    implementation libraries.androidx.navigation.fragment
+    implementation libraries.androidx.navigation.ui
 
-    implementation libraries.google.material
+    implementation libraries.material
 
-    implementation libraries.jetbrains.kotlin.stdlib
+    implementation libraries.kotlin.stdlib
+    implementation libraries.kotlin.coroutines
 
-    implementation libraries.jetbrains.anko
+    implementation libraries.anko
 
-    implementation libraries.google.dagger.dagger
-    implementation libraries.google.dagger.android_support
-    kapt libraries.google.dagger.compiler
-    kapt libraries.google.dagger.android_processor
+    implementation libraries.dagger.runtime
+    implementation libraries.dagger.androidRuntime
+    kapt libraries.dagger.compiler
+    kapt libraries.dagger.androidCompiler
 
-    implementation libraries.squareup.okhttp.okhttp
-    implementation libraries.squareup.okhttp.logging_interceptor
+    implementation libraries.okhttp.client
+    implementation libraries.okhttp.loggingInterceptor
 
-    implementation libraries.squareup.retrofit.retrofit
-    implementation libraries.squareup.retrofit.gson_converter
+    implementation libraries.okio
+
+    implementation libraries.retrofit.client
+    implementation libraries.retrofit.coroutinesAdapter
+    implementation libraries.retrofit.gsonConverter
 
     implementation libraries.timber
 
-    debugImplementation libraries.google.licenses.licenses
-
     testImplementation libraries.junit
-    androidTestImplementation libraries.android.support.testing.test_runner
-    androidTestImplementation libraries.android.support.testing.espresso
-    androidTestImplementation libraries.android.support.testing.junit
+    testImplementation libraries.truth
+
+    androidTestImplementation libraries.androidx.test.runner
+    androidTestImplementation libraries.androidx.test.junit
 }
