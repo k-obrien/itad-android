@@ -66,9 +66,9 @@ android {
 dependencies {
     implementation fileTree(include: ["*.jar"], dir: "libs")
 
-    implementation libraries.androidx.appcompat
+    implementation libraries.androidx.appCompat
     implementation libraries.androidx.collection
-    implementation libraries.androidx.constraintlayout
+    implementation libraries.androidx.constraintLayout
     implementation libraries.androidx.core
     implementation libraries.androidx.fragment
     implementation libraries.androidx.preference
@@ -90,6 +90,7 @@ dependencies {
 
     implementation libraries.okhttp.client
     implementation libraries.okhttp.loggingInterceptor
+    implementation libraries.okhttp.mockWebServer
 
     implementation libraries.okio
 
