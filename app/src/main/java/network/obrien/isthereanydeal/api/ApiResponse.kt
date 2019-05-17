@@ -16,19 +16,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal
+package network.obrien.isthereanydeal.api
 
-import org.junit.Assert.assertEquals
-import org.junit.Test
+import com.google.gson.annotations.SerializedName
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
-    }
-}
+data class ApiResponse<M, D>(
+    @SerializedName(".deprecated")
+    val deprecated: Any? = null,
+
+    @SerializedName(".unsupported")
+    val unsupported: Any? = null,
+
+    @SerializedName(".meta")
+    val meta: M? = null,
+
+    @SerializedName("data")
+    val data: D
+)

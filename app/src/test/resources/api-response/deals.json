@@ -1,0 +1,383 @@
+{
+  ".meta": {
+    "currency": "AUD"
+  },
+  "data": {
+    "count": 22920,
+    "list": [
+      {
+        "plain": "zaccariapinballplatinumpack",
+        "title": "Zaccaria Pinball - Platinum Pack",
+        "price_new": 138.07,
+        "price_old": 277,
+        "price_cut": 50,
+        "added": 1558100812,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [],
+        "urls": {
+          "buy": "https://store.steampowered.com/bundle/3672/",
+          "game": "https://isthereanydeal.com/game/zaccariapinballplatinumpack/info/"
+        }
+      },
+      {
+        "plain": "armaiiiapexedition",
+        "title": "Arma 3 Apex Edition",
+        "price_new": 33.98,
+        "price_old": 99.95,
+        "price_cut": 66,
+        "added": 1558099845,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "https://store.steampowered.com/app/639600/",
+          "game": "https://isthereanydeal.com/game/armaiiiapexedition/info/"
+        }
+      },
+      {
+        "plain": "bloodbowliinurgle",
+        "title": "Blood Bowl 2 - Nurgle",
+        "price_new": 6.8,
+        "price_old": 10.15,
+        "price_cut": 33,
+        "added": 1558098953,
+        "shop": {
+          "id": "amazonus",
+          "name": "Amazon"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "https://www.amazon.com/dp/B01NA9H25J?tag=isthcom0a-20",
+          "game": "https://isthereanydeal.com/game/bloodbowliinurgle/info/"
+        }
+      },
+      {
+        "plain": "bridgetoanotherworldthroughlookingglasscollectorsedition",
+        "title": "Bridge to Another World: Through the Looking Glass Collector's Edition",
+        "price_new": 16.25,
+        "price_old": 20.32,
+        "price_cut": 20,
+        "added": 1558097275,
+        "shop": {
+          "id": "macgamestore",
+          "name": "MacGameStore"
+        },
+        "drm": [
+          "Has DRM"
+        ],
+        "urls": {
+          "buy": "https://www.macgamestore.com/product/10452/Bridge-to-Another-World-Through-the-Looking-Glass-Collectors-Edition/?ars=itad",
+          "game": "https://isthereanydeal.com/game/bridgetoanotherworldthroughlookingglasscollectorsedition/info/"
+        }
+      },
+      {
+        "plain": "solitairelegendofpiratesiii",
+        "title": "Solitaire Legend Of The Pirates 3",
+        "price_new": 8.12,
+        "price_old": 10.15,
+        "price_cut": 20,
+        "added": 1558097274,
+        "shop": {
+          "id": "macgamestore",
+          "name": "MacGameStore"
+        },
+        "drm": [
+          "Has DRM"
+        ],
+        "urls": {
+          "buy": "https://www.macgamestore.com/product/10446/Solitaire-Legend-of-the-Pirates-3/?ars=itad",
+          "game": "https://isthereanydeal.com/game/solitairelegendofpiratesiii/info/"
+        }
+      },
+      {
+        "plain": "cubemeniiiipack",
+        "title": "Cubemen 2 2-Pack",
+        "price_new": 2.17,
+        "price_old": 14.5,
+        "price_cut": 85,
+        "added": 1558096885,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "https://store.steampowered.com/sub/26862/",
+          "game": "https://isthereanydeal.com/game/cubemeniiiipack/info/"
+        }
+      },
+      {
+        "plain": "dungeonsiiifamouslastwords",
+        "title": "Dungeons 3 - Famous Last Words",
+        "price_new": 6.39,
+        "price_old": 7.5,
+        "price_cut": 15,
+        "added": 1558096281,
+        "shop": {
+          "id": "gog",
+          "name": "GOG"
+        },
+        "drm": [
+          "DRM Free"
+        ],
+        "urls": {
+          "buy": "http://www.gog.com/game/dungeons_3_famous_last_words?pp=a93c168323147d1135503939396cac628dc194c5",
+          "game": "https://isthereanydeal.com/game/dungeonsiiifamouslastwords/info/"
+        }
+      },
+      {
+        "plain": "castlevaniaanniversarycollection",
+        "title": "Castlevania Anniversary Collection",
+        "price_new": 23.16,
+        "price_old": 28.95,
+        "price_cut": 20,
+        "added": 1558095923,
+        "shop": {
+          "id": "greenmangaming",
+          "name": "GreenManGaming"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "http://www.dpbolvw.net/click-6305441-10912384?URL=https%3A%2F%2Fwww.greenmangaming.com%2Fgames%2Fcastlevania-anniversary-collection-pc%2F",
+          "game": "https://isthereanydeal.com/game/castlevaniaanniversarycollection/info/"
+        }
+      },
+      {
+        "plain": "dungeonsiiifamouslastwords",
+        "title": "Dungeons 3 - Famous Last Words",
+        "price_new": 12.33,
+        "price_old": 14.5,
+        "price_cut": 15,
+        "added": 1558094836,
+        "shop": {
+          "id": "greenmangaming",
+          "name": "GreenManGaming"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "http://www.dpbolvw.net/click-6305441-10912384?URL=https%3A%2F%2Fwww.greenmangaming.com%2Fgames%2Fdungeons-3-famous-last-words-pc%2F",
+          "game": "https://isthereanydeal.com/game/dungeonsiiifamouslastwords/info/"
+        }
+      },
+      {
+        "plain": "roofrage",
+        "title": "Roof Rage",
+        "price_new": 7.4,
+        "price_old": 18.5,
+        "price_cut": 60,
+        "added": 1558094448,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "https://store.steampowered.com/app/724300/",
+          "game": "https://isthereanydeal.com/game/roofrage/info/"
+        }
+      },
+      {
+        "plain": "v0battlenetstoregiftcardbalance",
+        "title": "$50 Battle.net Store Gift Card Balance",
+        "price_new": 59.19,
+        "price_old": 72.68,
+        "price_cut": 19,
+        "added": 1558093422,
+        "shop": {
+          "id": "amazonus",
+          "name": "Amazon"
+        },
+        "drm": [],
+        "urls": {
+          "buy": "https://www.amazon.com/dp/B074F562BR?tag=isthcom0a-20",
+          "game": "https://isthereanydeal.com/game/v0battlenetstoregiftcardbalance/info/"
+        }
+      },
+      {
+        "plain": "trainzaneweradeluxefortrsiix",
+        "title": "Trainz A New Era Deluxe for TRS19",
+        "price_new": 49.23,
+        "price_old": 241.25,
+        "price_cut": 80,
+        "added": 1558092837,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [],
+        "urls": {
+          "buy": "https://store.steampowered.com/bundle/9655/",
+          "game": "https://isthereanydeal.com/game/trainzaneweradeluxefortrsiix/info/"
+        }
+      },
+      {
+        "plain": "cubemenbundle",
+        "title": "Cubemen Bundle",
+        "price_new": 2.17,
+        "price_old": 14.5,
+        "price_cut": 85,
+        "added": 1558092525,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "https://store.steampowered.com/sub/26860/",
+          "game": "https://isthereanydeal.com/game/cubemenbundle/info/"
+        }
+      },
+      {
+        "plain": "cubemeniipack",
+        "title": "Cubemen 2-Pack",
+        "price_new": 1.27,
+        "price_old": 8.5,
+        "price_cut": 85,
+        "added": 1558092525,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "https://store.steampowered.com/sub/14476/",
+          "game": "https://isthereanydeal.com/game/cubemeniipack/info/"
+        }
+      },
+      {
+        "plain": "platinumeditionbundle",
+        "title": "Platinum Edition Bundle",
+        "price_new": 113.48,
+        "price_old": 498.3,
+        "price_cut": 77,
+        "added": 1558090869,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [],
+        "urls": {
+          "buy": "https://store.steampowered.com/bundle/5306/",
+          "game": "https://isthereanydeal.com/game/platinumeditionbundle/info/"
+        }
+      },
+      {
+        "plain": "ironycurtainfrommatryoshkawithloverevolutionaryedition",
+        "title": "Irony Curtain: From Matryoshka with Love - Revolutionary Edition",
+        "price_new": 32.84,
+        "price_old": 39.4,
+        "price_cut": 17,
+        "added": 1558090458,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [],
+        "urls": {
+          "buy": "https://store.steampowered.com/bundle/10916/",
+          "game": "https://isthereanydeal.com/game/ironycurtainfrommatryoshkawithloverevolutionaryedition/info/"
+        }
+      },
+      {
+        "plain": "dirtrally",
+        "title": "DiRT Rally",
+        "price_new": 11.33,
+        "price_old": 56.65,
+        "price_cut": 80,
+        "added": 1558089974,
+        "shop": {
+          "id": "greenmangaming",
+          "name": "GreenManGaming"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "http://www.dpbolvw.net/click-6305441-10912384?URL=https%3A%2F%2Fwww.greenmangaming.com%2Fgames%2Fdirt-rally%2F",
+          "game": "https://isthereanydeal.com/game/dirtrally/info/"
+        }
+      },
+      {
+        "plain": "cubemenii",
+        "title": "Cubemen 2",
+        "price_new": 1.72,
+        "price_old": 11.5,
+        "price_cut": 85,
+        "added": 1558088241,
+        "shop": {
+          "id": "steam",
+          "name": "Steam"
+        },
+        "drm": [
+          "steam"
+        ],
+        "urls": {
+          "buy": "https://store.steampowered.com/app/228440/",
+          "game": "https://isthereanydeal.com/game/cubemenii/info/"
+        }
+      },
+      {
+        "plain": "hacknetofficialsoundtrack",
+        "title": "Hacknet Official Soundtrack",
+        "price_new": 9.49,
+        "price_old": 14.09,
+        "price_cut": 33,
+        "added": 1558087569,
+        "shop": {
+          "id": "gog",
+          "name": "GOG"
+        },
+        "drm": [
+          "DRM Free"
+        ],
+        "urls": {
+          "buy": "http://www.gog.com/game/hacknet_ost?pp=a93c168323147d1135503939396cac628dc194c5",
+          "game": "https://isthereanydeal.com/game/hacknetofficialsoundtrack/info/"
+        }
+      },
+      {
+        "plain": "curseofmonkeyisland",
+        "title": "The Curse of Monkey Island",
+        "price_new": 5.99,
+        "price_old": 9.89,
+        "price_cut": 39,
+        "added": 1558087569,
+        "shop": {
+          "id": "gog",
+          "name": "GOG"
+        },
+        "drm": [
+          "DRM Free"
+        ],
+        "urls": {
+          "buy": "http://www.gog.com/game/the_curse_of_monkey_island?pp=a93c168323147d1135503939396cac628dc194c5",
+          "game": "https://isthereanydeal.com/game/curseofmonkeyisland/info/"
+        }
+      }
+    ],
+    "urls": {
+      "deals": "https://isthereanydeal.com/"
+    }
+  }
+}
