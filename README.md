@@ -1,10 +1,12 @@
 # ITAD Android
 
-A native Android client for the excellent game price alerting website IsThereAnyDeal.com.
+A native Android client for the excellent game price alerting website [IsThereAnyDeal.com][1].
+
+## Disclaimer
+ITAD Android has no affiliation with [IsThereAnyDeal.com][1].
 
 ## LICENSE
-
-	Copyright (C) 2018-present  Kieran O'Brien
+	Copyright (C) 2018-present Kieran O'Brien
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -18,3 +20,5 @@ A native Android client for the excellent game price alerting website IsThereAny
 
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+[1]: https://isthereanydeal.com/
