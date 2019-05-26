@@ -32,7 +32,7 @@ class DealsServiceTest : ServiceTest() {
         enqueueResponse("deals.json")
 
         val response = service.getDeals(
-            key = "api_key",
+            apiKey = "api_key",
             offset = 40,
             limit = 100,
             region = "au2",

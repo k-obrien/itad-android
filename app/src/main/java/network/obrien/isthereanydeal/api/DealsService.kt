@@ -27,7 +27,7 @@ interface DealsService {
     @GET("v01/deals/list/")
     fun getDeals(
         @Query("key")
-        key: String,
+        apiKey: String,
 
         @Query("offset")
         offset: Int = 0,
