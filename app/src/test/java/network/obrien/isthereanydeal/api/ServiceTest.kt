@@ -23,18 +23,19 @@ import okio.buffer
 import okio.source
 import org.junit.After
 import org.junit.Before
-import retrofit2.Retrofit
 import java.io.IOException
 
 
-abstract class ServiceTest {
+abstract class ServiceTest<S : Any> {
     protected lateinit var server: MockWebServer
-    protected lateinit var service: DealsService
+    protected lateinit var service: S
+
+    protected abstract fun createService(): S
 
     @Before
     fun setup() {
         server = MockWebServer()
-        service = Retrofit.Builder().service(true, server.url("/"))
+        service = createService()
     }
 
     @After

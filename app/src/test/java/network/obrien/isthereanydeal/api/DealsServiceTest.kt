@@ -23,10 +23,13 @@ import network.obrien.isthereanydeal.vo.Deal
 import network.obrien.isthereanydeal.vo.Links
 import network.obrien.isthereanydeal.vo.Store
 import org.junit.Test
+import retrofit2.Retrofit
 import java.math.BigDecimal
 
 
-class DealsServiceTest : ServiceTest() {
+class DealsServiceTest : ServiceTest<DealsService>() {
+    override fun createService(): DealsService = Retrofit.Builder().service(true, server.url("/"))
+
     @Test
     fun dealsService_getDeals() = runBlocking {
         enqueueResponse("deals.json")
