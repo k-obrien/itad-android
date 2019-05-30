@@ -19,42 +19,47 @@ package network.obrien.isthereanydeal.api
 
 import com.google.gson.annotations.SerializedName
 import kotlinx.coroutines.Deferred
-import network.obrien.isthereanydeal.vo.Deal
 import retrofit2.http.GET
 import retrofit2.http.Query
+import java.math.BigDecimal
 
 interface DealsService {
     @GET("v01/deals/list/")
     fun getDeals(
-        @Query("key")
-        apiKey: String,
-
-        @Query("offset")
-        offset: Int = 0,
-
-        @Query("limit")
-        limit: Int = 20,
-
-        @Query("region")
-        region: String? = null,
-
-        @Query("country")
-        country: String? = null,
-
-        @Query("shops")
-        shops: String? = null
+        @Query("key") apiKey: String,
+        @Query("offset") offset: Int = 0,
+        @Query("limit") limit: Int = 20,
+        @Query("region") region: String? = null,
+        @Query("country") country: String? = null,
+        @Query("shops") stores: String? = null
     ): Deferred<ApiResponse<Meta, Data>>
 
-    data class Meta(
-        @SerializedName("currency")
-        val currency: String
-    )
+    data class Meta(@SerializedName("currency") val currency: String)
 
     data class Data(
-        @SerializedName("count")
-        val count: Long,
+        @SerializedName("count") val count: Long,
+        @SerializedName("list") val deals: List<Deal>
+    )
 
-        @SerializedName("list")
-        val deals: List<Deal>
+    data class Deal(
+        @SerializedName("plain") val gameId: String,
+        @SerializedName("title") val gameTitle: String,
+        @SerializedName("price_new") val currentPrice: BigDecimal,
+        @SerializedName("price_old") val previousPrice: BigDecimal,
+        @SerializedName("price_cut") val discountPercent: Int,
+        @SerializedName("added") val timeAddedSecondsUtc: Long,
+        @SerializedName("shop") val store: Store,
+        @SerializedName("drm") val drm: List<String>,
+        @SerializedName("urls") val links: Links
+    )
+
+    data class Store(
+        @SerializedName("id") val id: String,
+        @SerializedName("name") val name: String
+    )
+
+    data class Links(
+        @SerializedName("buy") val store: String,
+        @SerializedName("game") val itad: String
     )
 }

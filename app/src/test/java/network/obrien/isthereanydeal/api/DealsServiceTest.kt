@@ -19,9 +19,7 @@ package network.obrien.isthereanydeal.api
 
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
-import network.obrien.isthereanydeal.vo.Deal
-import network.obrien.isthereanydeal.vo.Links
-import network.obrien.isthereanydeal.vo.Store
+import network.obrien.isthereanydeal.api.DealsService.*
 import org.junit.Test
 import retrofit2.Retrofit
 import java.math.BigDecimal
@@ -40,7 +38,7 @@ class DealsServiceTest : ServiceTest<DealsService>() {
             limit = 100,
             region = "au2",
             country = "AU",
-            shops = "steam,gog"
+            stores = "steam,gog"
         ).await()
 
         val request = server.takeRequest()
@@ -62,12 +60,12 @@ class DealsServiceTest : ServiceTest<DealsService>() {
         val deal = deals.getOrNull(1)
         assertThat(deal).isNotNull()
         assertThat(deal).isInstanceOf(Deal::class.java)
-        assertThat(deal!!.plain).isEqualTo("armaiiiapexedition")
-        assertThat(deal.title).isEqualTo("Arma 3 Apex Edition")
+        assertThat(deal!!.gameId).isEqualTo("armaiiiapexedition")
+        assertThat(deal.gameTitle).isEqualTo("Arma 3 Apex Edition")
         assertThat(deal.currentPrice).isEqualTo(BigDecimal("33.98"))
         assertThat(deal.previousPrice).isEqualTo(BigDecimal("99.95"))
         assertThat(deal.discountPercent).isEqualTo(66)
-        assertThat(deal.timeAdded).isEqualTo(1558099845L)
+        assertThat(deal.timeAddedSecondsUtc).isEqualTo(1558099845L)
 
         val store = deal.store
         assertThat(store).isNotNull()
@@ -83,7 +81,7 @@ class DealsServiceTest : ServiceTest<DealsService>() {
         val links = deal.links
         assertThat(links).isNotNull()
         assertThat(links).isInstanceOf(Links::class.java)
-        assertThat(links.purchase).isEqualTo("https://store.steampowered.com/app/639600/")
-        assertThat(links.info).isEqualTo("https://isthereanydeal.com/game/armaiiiapexedition/info/")
+        assertThat(links.store).isEqualTo("https://store.steampowered.com/app/639600/")
+        assertThat(links.itad).isEqualTo("https://isthereanydeal.com/game/armaiiiapexedition/info/")
     }
 }

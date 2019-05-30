@@ -20,12 +20,7 @@ package network.obrien.isthereanydeal.api
 import com.google.gson.annotations.SerializedName
 
 data class ApiResponse<M, D : Any>(
-    @SerializedName(".deprecated")
-    val deprecated: String? = null,
-
-    @SerializedName(".meta")
-    val meta: M? = null,
-
-    @SerializedName("data")
-    val data: D
+    @SerializedName(".deprecated") val deprecated: String? = null,
+    @SerializedName(".meta") val meta: M? = null,
+    @SerializedName("data") val data: D
 )
