@@ -94,7 +94,6 @@ dependencies {
     implementation libraries.okio
 
     implementation libraries.retrofit.client
-    implementation libraries.retrofit.coroutinesAdapter
     implementation libraries.retrofit.gsonConverter
 
     implementation libraries.timber

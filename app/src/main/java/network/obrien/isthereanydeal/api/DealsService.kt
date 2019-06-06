@@ -18,21 +18,20 @@
 package network.obrien.isthereanydeal.api
 
 import com.google.gson.annotations.SerializedName
-import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 import java.math.BigDecimal
 
 interface DealsService {
     @GET("v01/deals/list/")
-    fun getDeals(
+    suspend fun getDeals(
         @Query("key") apiKey: String,
         @Query("offset") offset: Int = 0,
         @Query("limit") limit: Int = 20,
         @Query("region") region: String? = null,
         @Query("country") country: String? = null,
         @Query("shops") stores: String? = null
-    ): Deferred<ApiResponse<Meta, Data>>
+    ): ApiResponse<Meta, Data>
 
     data class Meta(@SerializedName("currency") val currency: String)
 
@@ -59,7 +58,7 @@ interface DealsService {
     )
 
     data class Links(
-        @SerializedName("buy") val store: String,
-        @SerializedName("game") val itad: String
+        @SerializedName("buy") val purchase: String,
+        @SerializedName("game") val info: String
     )
 }

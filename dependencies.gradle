@@ -46,8 +46,7 @@ versions.androidx.test.rules = "1.1.1"
 versions.androidx.test.runner = "1.1.1"
 
 versions.retrofit = [:]
-versions.retrofit.client = "2.5.0"
-versions.retrofit.coroutinesAdapter = "0.9.2"
+versions.retrofit.client = "2.6.0"
 
 
 ext.gradlePlugins = [:]
@@ -100,7 +99,6 @@ ext.libraries.okhttp.mockWebServer = "com.squareup.okhttp3:mockwebserver:${versi
 ext.libraries.retrofit = [:]
 ext.libraries.retrofit.client = "com.squareup.retrofit2:retrofit:${versions.retrofit.client}"
 ext.libraries.retrofit.gsonConverter = "com.squareup.retrofit2:converter-gson:${versions.retrofit.client}"
-ext.libraries.retrofit.coroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${versions.retrofit.coroutinesAdapter}"
 
 
 static def addRepos(RepositoryHandler handler) {

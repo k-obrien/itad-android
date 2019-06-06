@@ -39,7 +39,7 @@ class DealsServiceTest : ServiceTest<DealsService>() {
             region = "au2",
             country = "AU",
             stores = "steam,gog"
-        ).await()
+        )
 
         val request = server.takeRequest()
         assertThat(request.path).isEqualTo("/v01/deals/list/?key=api_key&offset=40&limit=100&region=au2&country=AU&shops=steam%2Cgog")
@@ -81,7 +81,7 @@ class DealsServiceTest : ServiceTest<DealsService>() {
         val links = deal.links
         assertThat(links).isNotNull()
         assertThat(links).isInstanceOf(Links::class.java)
-        assertThat(links.store).isEqualTo("https://store.steampowered.com/app/639600/")
-        assertThat(links.itad).isEqualTo("https://isthereanydeal.com/game/armaiiiapexedition/info/")
+        assertThat(links.purchase).isEqualTo("https://store.steampowered.com/app/639600/")
+        assertThat(links.info).isEqualTo("https://isthereanydeal.com/game/armaiiiapexedition/info/")
     }
 }

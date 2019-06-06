@@ -17,7 +17,6 @@
 
 package network.obrien.isthereanydeal.api
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,7 +35,6 @@ inline fun <reified T> Retrofit.Builder.service(debug: Boolean, baseUrl: HttpUrl
 
     return baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .client(httpClient.build())
         .build()
         .create(T::class.java)
