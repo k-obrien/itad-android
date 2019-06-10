@@ -78,7 +78,8 @@ dependencies {
     implementation libraries.material
 
     implementation libraries.kotlin.stdlib
-    implementation libraries.kotlin.coroutines
+    implementation libraries.kotlin.coroutines.core
+    implementation libraries.kotlin.coroutines.android
 
     implementation libraries.anko
 
