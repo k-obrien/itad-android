@@ -17,23 +17,23 @@
 
 
 def versions = [:]
-versions.android = "3.4.1"
+versions.android = "3.4.2"
 versions.anko = "0.10.8"
-versions.dagger = "2.22.1"
+versions.dagger = "2.24"
 versions.junit = "4.12"
-versions.kotlin = "1.3.31"
+versions.kotlin = "1.3.41"
 versions.kotlinCoroutines = "1.3.0-M1"
 versions.licenses = "0.9.5"
 versions.material = "1.0.0"
-versions.okhttp = "3.14.1"
+versions.okhttp = "4.0.1"
 versions.okio = "2.2.2"
 versions.timber = "4.7.1"
-versions.truth = "0.44"
+versions.truth = "1.0"
 versions.versions = "0.21.0"
 
 versions.androidx = [:]
 versions.androidx.appCompat = "1.0.2"
-versions.androidx.collection = "1.0.0"
+versions.androidx.collection = "1.1.0"
 versions.androidx.constraintLayout = "1.1.3"
 versions.androidx.core = "1.0.2"
 versions.androidx.fragment = "1.0.0"
@@ -41,9 +41,9 @@ versions.androidx.navigation = "2.0.0"
 versions.androidx.preference = "1.0.0"
 
 versions.androidx.test = [:]
-versions.androidx.test.junit = "1.1.0"
+versions.androidx.test.junit = "1.1.1"
 versions.androidx.test.rules = "1.1.1"
-versions.androidx.test.runner = "1.1.1"
+versions.androidx.test.runner = "1.2.0"
 
 versions.retrofit = [:]
 versions.retrofit.client = "2.6.0"
@@ -93,6 +93,7 @@ ext.libraries.kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${version
 ext.libraries.kotlin.coroutines = [:]
 ext.libraries.kotlin.coroutines.core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}"
 ext.libraries.kotlin.coroutines.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}"
+ext.libraries.kotlin.coroutines.test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinCoroutines}"
 
 ext.libraries.okhttp = [:]
 ext.libraries.okhttp.client = "com.squareup.okhttp3:okhttp:${versions.okhttp}"
