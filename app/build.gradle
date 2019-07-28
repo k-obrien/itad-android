@@ -37,7 +37,8 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro",
+            shrinkResources true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro",
                     "proguard-okhttp-rules.pro", "proguard-okio-rules.pro", "proguard-retrofit-rules.pro"
             resValue "string", "app_id", "${defaultConfig.applicationId}"
             resValue "string", "app_version", "${defaultConfig.versionName}"
