@@ -1,0 +1,2 @@
+# Ignore HTML files when calculating repo language
+*.html linguist-vendored
