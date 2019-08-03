@@ -1,2 +1,2 @@
-# Ignore HTML files when calculating repo language
-*.html linguist-vendored
+# Ignore HTML license files when calculating repo language
+app/src/main/assets/licenses/* linguist-vendored
