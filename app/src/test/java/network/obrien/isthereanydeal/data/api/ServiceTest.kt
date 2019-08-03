@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package network.obrien.isthereanydeal.api
+package network.obrien.isthereanydeal.data.api
 
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -24,7 +24,6 @@ import okio.source
 import org.junit.After
 import org.junit.Before
 import java.io.IOException
-
 
 abstract class ServiceTest<S : Any> {
     protected lateinit var server: MockWebServer

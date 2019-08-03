@@ -15,14 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.api
+package network.obrien.isthereanydeal.data.api
 
 import com.google.gson.annotations.SerializedName
+import network.obrien.isthereanydeal.data.deals.model.DealData
+import network.obrien.isthereanydeal.data.deals.model.DealMeta
 import retrofit2.http.GET
 import retrofit2.http.Query
-import java.math.BigDecimal
 
-interface DealsService {
+/**
+ * IsThereAnyDeal API
+ *
+ * https://itad.docs.apiary.io/
+ */
+interface IsThereAnyDealService {
     @GET("v01/deals/list/")
     suspend fun getDeals(
         @Query("key") apiKey: String,
@@ -31,34 +37,15 @@ interface DealsService {
         @Query("region") region: String? = null,
         @Query("country") country: String? = null,
         @Query("shops") stores: String? = null
-    ): ApiResponse<Meta, Data>
+    ): Response<DealMeta, DealData>
 
-    data class Meta(@SerializedName("currency") val currency: String)
-
-    data class Data(
-        @SerializedName("count") val count: Long,
-        @SerializedName("list") val deals: List<Deal>
+    data class Response<MetaDataType, DataType : Any>(
+        @SerializedName(".deprecated") val deprecated: String? = null,
+        @SerializedName(".meta") val meta: MetaDataType? = null,
+        @SerializedName("data") val data: DataType
     )
 
-    data class Deal(
-        @SerializedName("plain") val gameId: String,
-        @SerializedName("title") val gameTitle: String,
-        @SerializedName("price_new") val currentPrice: BigDecimal,
-        @SerializedName("price_old") val previousPrice: BigDecimal,
-        @SerializedName("price_cut") val discountPercent: Int,
-        @SerializedName("added") val timeAddedSecondsUtc: Long,
-        @SerializedName("shop") val store: Store,
-        @SerializedName("drm") val drm: List<String>,
-        @SerializedName("urls") val links: Links
-    )
-
-    data class Store(
-        @SerializedName("id") val id: String,
-        @SerializedName("name") val name: String
-    )
-
-    data class Links(
-        @SerializedName("buy") val purchase: String,
-        @SerializedName("game") val info: String
-    )
+    companion object {
+        private const val ENDPOINT = "https://api.isthereanydeal.com/"
+    }
 }

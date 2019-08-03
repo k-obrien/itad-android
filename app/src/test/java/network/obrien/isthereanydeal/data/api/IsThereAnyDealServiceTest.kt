@@ -15,18 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.api
+package network.obrien.isthereanydeal.data.api
 
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
-import network.obrien.isthereanydeal.api.DealsService.*
+import network.obrien.isthereanydeal.data.deals.model.DealLinks
+import network.obrien.isthereanydeal.data.deals.model.Deal
+import network.obrien.isthereanydeal.data.deals.model.DealStore
 import org.junit.Test
 import retrofit2.Retrofit
 import java.math.BigDecimal
 
-
-class DealsServiceTest : ServiceTest<DealsService>() {
-    override fun createService(): DealsService = Retrofit.Builder().service(true, server.url("/"))
+class IsThereAnyDealServiceTest : ServiceTest<IsThereAnyDealService>() {
+    override fun createService(): IsThereAnyDealService =
+        Retrofit.Builder().service(true, server.url("/"))
 
     @Test
     fun dealsService_getDeals() = runBlocking {
@@ -69,7 +71,7 @@ class DealsServiceTest : ServiceTest<DealsService>() {
 
         val store = deal.store
         assertThat(store).isNotNull()
-        assertThat(store).isInstanceOf(Store::class.java)
+        assertThat(store).isInstanceOf(DealStore::class.java)
         assertThat(store.id).isEqualTo("steam")
         assertThat(store.name).isEqualTo("Steam")
 
@@ -80,7 +82,7 @@ class DealsServiceTest : ServiceTest<DealsService>() {
 
         val links = deal.links
         assertThat(links).isNotNull()
-        assertThat(links).isInstanceOf(Links::class.java)
+        assertThat(links).isInstanceOf(DealLinks::class.java)
         assertThat(links.purchase).isEqualTo("https://store.steampowered.com/app/639600/")
         assertThat(links.info).isEqualTo("https://isthereanydeal.com/game/armaiiiapexedition/info/")
     }

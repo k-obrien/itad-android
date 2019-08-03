@@ -15,14 +15,13 @@
  * limitations under the License.
  */
 
-package network.obrien.isthereanydeal.api
+package network.obrien.isthereanydeal.data.api
 
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 inline fun <reified T> Retrofit.Builder.service(debug: Boolean, baseUrl: HttpUrl): T {
     val httpClient = OkHttpClient.Builder()

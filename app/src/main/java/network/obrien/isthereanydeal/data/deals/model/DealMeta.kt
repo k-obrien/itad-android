@@ -15,12 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.api
+package network.obrien.isthereanydeal.data.deals.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ApiResponse<MetaDataType, DataType : Any>(
-    @SerializedName(".deprecated") val deprecated: String? = null,
-    @SerializedName(".meta") val meta: MetaDataType? = null,
-    @SerializedName("data") val data: DataType
-)
+data class DealMeta(@SerializedName("currency") val currency: String)
