@@ -1,5 +1,5 @@
 # ITAD Android
-[![Build Status](https://app.bitrise.io/app/1949897016166436/status.svg?token=lt-pUOKUD7Yb_GC88ur2zA)](https://app.bitrise.io/app/1949897016166436)
+[![Build Status](https://app.bitrise.io/app/bf678f93be4cdcbc/status.svg?token=XlpP7cvFuI6Wasbyr2xMTw)](https://app.bitrise.io/app/bf678f93be4cdcbc)
 
 A native Android client for the excellent game price alerting website IsThereAnyDeal.com.
 
