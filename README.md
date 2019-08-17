@@ -2,7 +2,7 @@
 [![Bitrise](https://img.shields.io/bitrise/bf678f93be4cdcbc/develop?label=build&token=XlpP7cvFuI6Wasbyr2xMTw)](https://app.bitrise.io/app/bf678f93be4cdcbc)
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-A native Android client for the excellent game price alerting website IsThereAnyDeal.com.
+A native Android client for the excellent game price alerting website [IsThereAnyDeal](https://isthereanydeal.com/).
 
 ## LICENSE
 
