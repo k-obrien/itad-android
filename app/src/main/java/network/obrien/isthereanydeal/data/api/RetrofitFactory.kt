@@ -25,7 +25,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-
 inline fun <reified T> Retrofit.Builder.service(debug: Boolean, baseUrl: HttpUrl): T {
     val httpClient = OkHttpClient.Builder()
 
@@ -43,4 +42,3 @@ inline fun <reified T> Retrofit.Builder.service(debug: Boolean, baseUrl: HttpUrl
         .build()
         .create(T::class.java)
 }
-

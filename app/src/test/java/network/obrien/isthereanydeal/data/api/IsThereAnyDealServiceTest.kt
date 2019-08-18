@@ -19,8 +19,8 @@ package network.obrien.isthereanydeal.data.api
 
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
-import network.obrien.isthereanydeal.data.deals.model.DealLinks
 import network.obrien.isthereanydeal.data.deals.model.Deal
+import network.obrien.isthereanydeal.data.deals.model.DealLinks
 import network.obrien.isthereanydeal.data.deals.model.DealStore
 import org.junit.Test
 import retrofit2.Retrofit

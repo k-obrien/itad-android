@@ -17,7 +17,7 @@
 
 package network.obrien.isthereanydeal.data.api
 
-import com.squareup.moshi.Json
+import network.obrien.isthereanydeal.data.api.model.IsThereAnyDealResponse
 import network.obrien.isthereanydeal.data.deals.model.DealData
 import network.obrien.isthereanydeal.data.deals.model.DealMeta
 import retrofit2.http.GET
@@ -37,13 +37,7 @@ interface IsThereAnyDealService {
         @Query("region") region: String? = null,
         @Query("country") country: String? = null,
         @Query("shops") stores: String? = null
-    ): Response<DealMeta, DealData>
-
-    data class Response<MetaDataType, DataType : Any>(
-        @field:Json(name = ".deprecated") val deprecated: String? = null,
-        @field:Json(name = ".meta") val meta: MetaDataType? = null,
-        @field:Json(name = "data") val data: DataType
-    )
+    ): IsThereAnyDealResponse<DealMeta, DealData>
 
     companion object {
         private const val ENDPOINT = "https://api.isthereanydeal.com/"
