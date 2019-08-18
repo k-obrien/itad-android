@@ -29,10 +29,10 @@
     <string name="preference_licenses_title" translatable="true">Third-party licenses</string>
     <string name="preference_licenses_url" translatable="false">licenses/licenses.json</string>
     <string name="preference_license_base_url" translatable="false">file:///android_asset/licenses/%1$s.html</string>
-    <string name="preference_privacy_policy_title" translatable="true">IsThereAnyDeal.com Privacy policy</string>
+    <string name="preference_privacy_policy_title" translatable="true">IsThereAnyDeal Privacy policy</string>
     <string name="preference_privacy_policy_url" translatable="false">https://isthereanydeal.com/legal/privacy/</string>
-    <string name="preference_disclaimer_title" translatable="true">IsThereAnyDeal.com</string>
-    <string name="preference_disclaimer_summary" translatable="true">ITAD Android has no affiliation with IsThereAnyDeal.com</string>
+    <string name="preference_disclaimer_title" translatable="true">IsThereAnyDeal</string>
+    <string name="preference_disclaimer_summary" translatable="true">ITAD Android has no affiliation with IsThereAnyDeal</string>
     <string name="preference_disclaimer_url" translatable="false">https://isthereanydeal.com</string>
     <string name="preference_version_title" translatable="true">Version</string>
     <string name="dialog_licenses_error_content" translatable="true">An error occurred while trying to load third-party licenses.</string>
