@@ -18,8 +18,10 @@
 package network.obrien.isthereanydeal.data.deals.model
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import java.math.BigDecimal
 
+@JsonClass(generateAdapter = true)
 data class Deal(
     @field:Json(name = "plain") val gameId: String,
     @field:Json(name = "title") val gameTitle: String,

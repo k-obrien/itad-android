@@ -18,5 +18,7 @@
 package network.obrien.isthereanydeal.data.deals.model
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class DealMeta(@field:Json(name = "currency") val currency: String)

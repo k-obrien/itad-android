@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceScreen
+import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -130,7 +131,8 @@ class SettingsActivity : AppCompatActivity() {
             return true
         }
 
-        private data class ThirdPartyLicenses(
+        @JsonClass(generateAdapter = true)
+        internal data class ThirdPartyLicenses(
             val dependencies: List<String>,
             val license: String
         )

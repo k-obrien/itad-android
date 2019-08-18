@@ -18,7 +18,9 @@
 package network.obrien.isthereanydeal.data.deals.model
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class DealLinks(
     @field:Json(name = "buy") val purchase: String,
     @field:Json(name = "game") val info: String

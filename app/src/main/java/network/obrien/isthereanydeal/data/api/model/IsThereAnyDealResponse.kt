@@ -18,7 +18,9 @@
 package network.obrien.isthereanydeal.data.api.model
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class IsThereAnyDealResponse<MetaDataType, DataType : Any>(
     @field:Json(name = ".deprecated") val deprecated: String? = null,
     @field:Json(name = ".meta") val meta: MetaDataType? = null,
