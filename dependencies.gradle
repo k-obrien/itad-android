@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 def versions = [:]
 versions.android = "3.4.2"
 versions.anko = "0.10.8"
@@ -25,8 +24,10 @@ versions.kotlin = "1.3.41"
 versions.kotlinCoroutines = "1.3.0-M1"
 versions.licenses = "0.9.5"
 versions.material = "1.0.0"
+versions.moshi = "1.8.0"
 versions.okhttp = "4.0.1"
 versions.okio = "2.2.2"
+versions.retrofit = "2.6.1"
 versions.timber = "4.7.1"
 versions.truth = "1.0"
 versions.versions = "0.21.0"
@@ -44,9 +45,6 @@ versions.androidx.test = [:]
 versions.androidx.test.junit = "1.1.1"
 versions.androidx.test.rules = "1.1.1"
 versions.androidx.test.runner = "1.2.0"
-
-versions.retrofit = [:]
-versions.retrofit.client = "2.6.0"
 
 
 ext.gradlePlugins = [:]
@@ -95,14 +93,18 @@ ext.libraries.kotlin.coroutines.core = "org.jetbrains.kotlinx:kotlinx-coroutines
 ext.libraries.kotlin.coroutines.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}"
 ext.libraries.kotlin.coroutines.test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinCoroutines}"
 
+ext.libraries.moshi = [:]
+ext.libraries.moshi.parser = "com.squareup.moshi:moshi:${versions.moshi}"
+ext.libraries.moshi.codegen = "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"
+
 ext.libraries.okhttp = [:]
 ext.libraries.okhttp.client = "com.squareup.okhttp3:okhttp:${versions.okhttp}"
 ext.libraries.okhttp.loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
 ext.libraries.okhttp.mockWebServer = "com.squareup.okhttp3:mockwebserver:${versions.okhttp}"
 
 ext.libraries.retrofit = [:]
-ext.libraries.retrofit.client = "com.squareup.retrofit2:retrofit:${versions.retrofit.client}"
-ext.libraries.retrofit.gsonConverter = "com.squareup.retrofit2:converter-gson:${versions.retrofit.client}"
+ext.libraries.retrofit.client = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+ext.libraries.retrofit.jsonConverter = "com.squareup.retrofit2:converter-moshi:${versions.retrofit}"
 
 
 static def addRepos(RepositoryHandler handler) {

@@ -17,7 +17,7 @@
 
 package network.obrien.isthereanydeal.data.api
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import network.obrien.isthereanydeal.data.deals.model.DealData
 import network.obrien.isthereanydeal.data.deals.model.DealMeta
 import retrofit2.http.GET
@@ -40,9 +40,9 @@ interface IsThereAnyDealService {
     ): Response<DealMeta, DealData>
 
     data class Response<MetaDataType, DataType : Any>(
-        @SerializedName(".deprecated") val deprecated: String? = null,
-        @SerializedName(".meta") val meta: MetaDataType? = null,
-        @SerializedName("data") val data: DataType
+        @field:Json(name = ".deprecated") val deprecated: String? = null,
+        @field:Json(name = ".meta") val meta: MetaDataType? = null,
+        @field:Json(name = "data") val data: DataType
     )
 
     companion object {

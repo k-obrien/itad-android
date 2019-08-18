@@ -93,10 +93,13 @@ dependencies {
     implementation libraries.okhttp.loggingInterceptor
     implementation libraries.okhttp.mockWebServer
 
+    implementation libraries.moshi.parser
+    kapt libraries.moshi.codegen
+
     implementation libraries.okio
 
     implementation libraries.retrofit.client
-    implementation libraries.retrofit.gsonConverter
+    implementation libraries.retrofit.jsonConverter
 
     implementation libraries.timber
 

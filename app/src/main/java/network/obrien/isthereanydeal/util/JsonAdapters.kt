@@ -15,11 +15,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.data.deals.model
+package network.obrien.isthereanydeal.util
 
-import com.squareup.moshi.Json
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.ToJson
+import java.math.BigDecimal
 
-data class DealStore(
-    @field:Json(name = "id") val id: String,
-    @field:Json(name = "name") val name: String
-)
+object BigDecimalAdapter {
+    @FromJson
+    fun fromJson(json: String): BigDecimal = BigDecimal(json)
+
+    @ToJson
+    fun toJson(bigDecimal: BigDecimal): String = bigDecimal.toString()
+}

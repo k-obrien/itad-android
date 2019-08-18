@@ -17,9 +17,9 @@
 
 package network.obrien.isthereanydeal.data.deals.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class DealLinks(
-    @SerializedName("buy") val purchase: String,
-    @SerializedName("game") val info: String
+    @field:Json(name = "buy") val purchase: String,
+    @field:Json(name = "game") val info: String
 )

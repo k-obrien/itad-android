@@ -17,17 +17,17 @@
 
 package network.obrien.isthereanydeal.data.deals.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import java.math.BigDecimal
 
 data class Deal(
-    @SerializedName("plain") val gameId: String,
-    @SerializedName("title") val gameTitle: String,
-    @SerializedName("price_new") val currentPrice: BigDecimal,
-    @SerializedName("price_old") val previousPrice: BigDecimal,
-    @SerializedName("price_cut") val discountPercent: Int,
-    @SerializedName("added") val timeAddedSecondsUtc: Long,
-    @SerializedName("shop") val store: DealStore,
-    @SerializedName("drm") val drm: List<String>,
-    @SerializedName("urls") val links: DealLinks
+    @field:Json(name = "plain") val gameId: String,
+    @field:Json(name = "title") val gameTitle: String,
+    @field:Json(name = "price_new") val currentPrice: BigDecimal,
+    @field:Json(name = "price_old") val previousPrice: BigDecimal,
+    @field:Json(name = "price_cut") val discountPercent: Int,
+    @field:Json(name = "added") val timeAddedSecondsUtc: Long,
+    @field:Json(name = "shop") val store: DealStore,
+    @field:Json(name = "drm") val drm: List<String>,
+    @field:Json(name = "urls") val links: DealLinks
 )

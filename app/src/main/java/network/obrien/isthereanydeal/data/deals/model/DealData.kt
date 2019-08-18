@@ -17,9 +17,9 @@
 
 package network.obrien.isthereanydeal.data.deals.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class DealData(
-    @SerializedName("count") val count: Long,
-    @SerializedName("list") val deals: List<Deal>
+    @field:Json(name = "count") val count: Long,
+    @field:Json(name = "list") val deals: List<Deal>
 )

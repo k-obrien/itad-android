@@ -23,8 +23,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceScreen
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import kotlinx.android.synthetic.main.activity_settings.*
 import network.obrien.isthereanydeal.R
 import org.jetbrains.anko.alert
@@ -76,10 +76,14 @@ class SettingsActivity : AppCompatActivity() {
                                 input.bufferedReader().use { reader -> reader.readText() }
                             }
                             .let { json ->
-                                Gson().fromJson<List<ThirdPartyLicenses>>(
-                                    json,
-                                    object : TypeToken<List<ThirdPartyLicenses>>() {}.type
-                                )
+                                Moshi.Builder().build()
+                                    .adapter<List<ThirdPartyLicenses>>(
+                                        Types.newParameterizedType(
+                                            List::class.java,
+                                            ThirdPartyLicenses::class.java
+                                        )
+                                    )
+                                    .fromJson(json)
                             }
                             ?.flatMap { licenses ->
                                 licenses.dependencies.map { dependency ->

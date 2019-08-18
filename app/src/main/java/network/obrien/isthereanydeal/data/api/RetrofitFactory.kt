@@ -17,11 +17,14 @@
 
 package network.obrien.isthereanydeal.data.api
 
+import com.squareup.moshi.Moshi
+import network.obrien.isthereanydeal.util.BigDecimalAdapter
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
+
 
 inline fun <reified T> Retrofit.Builder.service(debug: Boolean, baseUrl: HttpUrl): T {
     val httpClient = OkHttpClient.Builder()
@@ -32,9 +35,12 @@ inline fun <reified T> Retrofit.Builder.service(debug: Boolean, baseUrl: HttpUrl
         httpClient.addInterceptor(logging)
     }
 
+    val moshi = Moshi.Builder().add(BigDecimalAdapter).build()
+
     return baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
         .client(httpClient.build())
         .build()
         .create(T::class.java)
 }
+

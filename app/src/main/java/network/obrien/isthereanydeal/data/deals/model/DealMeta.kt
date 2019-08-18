@@ -17,6 +17,6 @@
 
 package network.obrien.isthereanydeal.data.deals.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
-data class DealMeta(@SerializedName("currency") val currency: String)
+data class DealMeta(@field:Json(name = "currency") val currency: String)
