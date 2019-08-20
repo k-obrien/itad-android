@@ -20,6 +20,7 @@ package network.obrien.isthereanydeal.data.api
 import network.obrien.isthereanydeal.data.api.model.IsThereAnyDealResponse
 import network.obrien.isthereanydeal.data.deals.model.DealData
 import network.obrien.isthereanydeal.data.deals.model.DealMeta
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -37,9 +38,9 @@ interface IsThereAnyDealService {
         @Query("region") region: String? = null,
         @Query("country") country: String? = null,
         @Query("shops") stores: String? = null
-    ): IsThereAnyDealResponse<DealMeta, DealData>
+    ): Response<IsThereAnyDealResponse<DealMeta, DealData>>
 
     companion object {
-        private const val ENDPOINT = "https://api.isthereanydeal.com/"
+        const val ENDPOINT = "https://api.isthereanydeal.com/"
     }
 }
