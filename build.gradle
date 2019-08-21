@@ -56,13 +56,8 @@ allprojects {
     }
 
     afterEvaluate {
-        def kapt = extensions.findByName("kapt")
-
-        if (kapt != null) {
-            kapt.arguments {
-                arg("dagger.formatGeneratedSource", "disabled")
-                arg("dagger.gradle.incremental", "enabled")
-            }
+        extensions.findByName("kapt")?.arguments {
+            arg("dagger.formatGeneratedSource", "disabled")
         }
     }
 }
