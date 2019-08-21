@@ -16,7 +16,7 @@
  */
 
 def versions = [:]
-versions.android = "3.4.2"
+versions.android = "3.5.0"
 versions.anko = "0.10.8"
 versions.dagger = "2.24"
 versions.junit = "4.12"
