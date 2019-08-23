@@ -20,6 +20,8 @@ package network.obrien.isthereanydeal.data.api
 import network.obrien.isthereanydeal.data.api.model.IsThereAnyDealResponse
 import network.obrien.isthereanydeal.data.deals.model.DealData
 import network.obrien.isthereanydeal.data.deals.model.DealMeta
+import network.obrien.isthereanydeal.data.store.model.Store
+import network.obrien.isthereanydeal.data.store.model.StoreMeta
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -30,6 +32,15 @@ import retrofit2.http.Query
  * https://itad.docs.apiary.io/
  */
 interface IsThereAnyDealService {
+    @GET("v01/web/stores/all/")
+    suspend fun getAllStores(): Response<IsThereAnyDealResponse<Nothing, List<Store>>>
+
+    @GET("v02/web/stores/")
+    suspend fun getStoresForRegion(
+        @Query("region") regionCode: String,
+        @Query("country") countryCode: String
+    ): Response<IsThereAnyDealResponse<StoreMeta, List<Store>>>
+
     @GET("v01/deals/list/")
     suspend fun getDeals(
         @Query("key") apiKey: String,
