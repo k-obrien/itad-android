@@ -39,6 +39,7 @@ versions.androidx.constraintLayout = "1.1.3"
 versions.androidx.core = "1.0.2"
 versions.androidx.fragment = "1.0.0"
 versions.androidx.navigation = "2.0.0"
+versions.androidx.paging = "2.1.0"
 versions.androidx.preference = "1.0.0"
 
 versions.androidx.test = [:]
@@ -69,6 +70,7 @@ ext.libraries.androidx.collection = "androidx.collection:collection-ktx:${versio
 ext.libraries.androidx.constraintLayout = "androidx.constraintlayout:constraintlayout:${versions.androidx.constraintLayout}"
 ext.libraries.androidx.core = "androidx.core:core-ktx:${versions.androidx.core}"
 ext.libraries.androidx.fragment = "androidx.fragment:fragment-ktx:${versions.androidx.fragment}"
+ext.libraries.androidx.paging = "androidx.paging:paging-runtime-ktx:${versions.androidx.paging}"
 ext.libraries.androidx.preference = "androidx.preference:preference:${versions.androidx.preference}"
 
 ext.libraries.androidx.navigation = [:]
