@@ -15,22 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.data.deals.model
+package network.obrien.isthereanydeal.data.deal.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import network.obrien.isthereanydeal.data.store.model.Store
-import java.math.BigDecimal
 
 @JsonClass(generateAdapter = true)
-data class Deal(
-    @field:Json(name = "plain") val gameId: String,
-    @field:Json(name = "title") val gameTitle: String,
-    @field:Json(name = "price_new") val currentPrice: BigDecimal,
-    @field:Json(name = "price_old") val previousPrice: BigDecimal,
-    @field:Json(name = "price_cut") val discountPercent: Int,
-    @field:Json(name = "added") val timeAddedSecondsUtc: Long,
-    @field:Json(name = "shop") val store: Store,
-    @field:Json(name = "drm") val drm: List<String>,
-    @field:Json(name = "urls") val links: DealLinks
-)
+data class DealMeta(@field:Json(name = "currency") val currency: String)

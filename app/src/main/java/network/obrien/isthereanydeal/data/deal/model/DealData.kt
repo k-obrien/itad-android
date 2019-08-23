@@ -15,10 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.data.deals.model
+package network.obrien.isthereanydeal.data.deal.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class DealMeta(@field:Json(name = "currency") val currency: String)
+data class DealData(
+    @field:Json(name = "count") val count: Long,
+    @field:Json(name = "list") val deals: List<Deal>
+)
