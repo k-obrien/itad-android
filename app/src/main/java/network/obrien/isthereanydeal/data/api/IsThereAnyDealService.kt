@@ -22,7 +22,7 @@ import network.obrien.isthereanydeal.data.deal.model.DealsData
 import network.obrien.isthereanydeal.data.deal.model.DealsMeta
 import network.obrien.isthereanydeal.data.region.model.Region
 import network.obrien.isthereanydeal.data.store.model.Store
-import network.obrien.isthereanydeal.data.store.model.StoreMeta
+import network.obrien.isthereanydeal.data.store.model.StoresMeta
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -43,7 +43,7 @@ interface IsThereAnyDealService {
     suspend fun getStoresForRegion(
         @Query("region") regionCode: String,
         @Query("country") countryCode: String
-    ): Response<IsThereAnyDealResponse<StoreMeta, List<Store>>>
+    ): Response<IsThereAnyDealResponse<StoresMeta, List<Store>>>
 
     @GET("v01/deals/list/")
     suspend fun getDeals(

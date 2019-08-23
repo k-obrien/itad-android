@@ -21,7 +21,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class StoreMeta(
+data class StoresMeta(
     @field:Json(name = "region") val regionCode: String,
     @field:Json(name = "country") val countryCode: String
 )
