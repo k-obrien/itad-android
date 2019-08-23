@@ -15,13 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.data.deals.model
+package network.obrien.isthereanydeal.data.store.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class DealStore(
+data class Store(
     @field:Json(name = "id") val id: String,
     @field:Json(name = "name") val name: String
 )
