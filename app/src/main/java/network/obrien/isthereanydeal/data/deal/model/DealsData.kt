@@ -21,4 +21,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class DealMeta(@field:Json(name = "currency") val currency: String)
+data class DealsData(
+    @field:Json(name = "count") val count: Long,
+    @field:Json(name = "list") val deals: List<Deal>
+)

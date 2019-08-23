@@ -18,8 +18,8 @@
 package network.obrien.isthereanydeal.data.api
 
 import network.obrien.isthereanydeal.data.api.model.IsThereAnyDealResponse
-import network.obrien.isthereanydeal.data.deal.model.DealData
-import network.obrien.isthereanydeal.data.deal.model.DealMeta
+import network.obrien.isthereanydeal.data.deal.model.DealsData
+import network.obrien.isthereanydeal.data.deal.model.DealsMeta
 import network.obrien.isthereanydeal.data.region.model.Region
 import network.obrien.isthereanydeal.data.store.model.Store
 import network.obrien.isthereanydeal.data.store.model.StoreMeta
@@ -53,7 +53,7 @@ interface IsThereAnyDealService {
         @Query("region") region: String? = null,
         @Query("country") country: String? = null,
         @Query("shops") stores: String? = null
-    ): Response<IsThereAnyDealResponse<DealMeta, DealData>>
+    ): Response<IsThereAnyDealResponse<DealsMeta, DealsData>>
 
     companion object {
         const val ENDPOINT = "https://api.isthereanydeal.com/"
