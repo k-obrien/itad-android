@@ -20,6 +20,8 @@ package network.obrien.isthereanydeal.data.store.model
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+typealias Stores = List<Store>
+
 @JsonClass(generateAdapter = true)
 data class Store(
     @field:Json(name = "id") val id: String,

@@ -22,15 +22,17 @@ import com.squareup.moshi.JsonClass
 import network.obrien.isthereanydeal.data.store.model.Store
 import java.math.BigDecimal
 
+typealias DrmPlatforms = List<String>
+
 @JsonClass(generateAdapter = true)
 data class Deal(
     @field:Json(name = "plain") val gameId: String,
     @field:Json(name = "title") val gameTitle: String,
-    @field:Json(name = "price_new") val currentPrice: BigDecimal,
-    @field:Json(name = "price_old") val previousPrice: BigDecimal,
+    @field:Json(name = "price_new") val discountPrice: BigDecimal,
+    @field:Json(name = "price_old") val regularPrice: BigDecimal,
     @field:Json(name = "price_cut") val discountPercent: Int,
     @field:Json(name = "added") val timeAddedSecondsUtc: Long,
     @field:Json(name = "shop") val store: Store,
-    @field:Json(name = "drm") val drm: List<String>,
+    @field:Json(name = "drm") val drm: DrmPlatforms,
     @field:Json(name = "urls") val links: DealLinks
 )

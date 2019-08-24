@@ -20,8 +20,11 @@ package network.obrien.isthereanydeal.data.region.model
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+typealias RegionByCode = Map<String, Region>
+typealias CountryNameByCode = Map<String, String>
+
 @JsonClass(generateAdapter = true)
 data class Region(
-    @field:Json(name = "countries") val countries: Map<String, String>,
+    @field:Json(name = "countries") val countries: CountryNameByCode,
     @field:Json(name = "currency") val currency: RegionCurrency
 )
