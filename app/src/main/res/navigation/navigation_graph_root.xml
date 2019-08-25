@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/main_fragment"
-        android:name="network.obrien.isthereanydeal.MainFragment"
+        android:name="network.obrien.isthereanydeal.ui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
 </navigation>

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.settings
+package network.obrien.isthereanydeal.ui.settings
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -32,6 +32,7 @@ import org.jetbrains.anko.alert
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.okButton
 import timber.log.Timber
+import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,7 +100,7 @@ class SettingsActivity : AppCompatActivity() {
                                     }
                                 }
                             }
-                            ?.sortedBy { it.title.toString().toLowerCase() }
+                            ?.sortedBy { it.title.toString().toLowerCase(Locale.getDefault()) }
                             ?.forEach { addPreference(it) }
                     } catch (e: Exception) {
                         Timber.e(e)

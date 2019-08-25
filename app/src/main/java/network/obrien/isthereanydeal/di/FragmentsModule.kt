@@ -19,7 +19,7 @@ package network.obrien.isthereanydeal.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import network.obrien.isthereanydeal.MainFragment
+import network.obrien.isthereanydeal.ui.MainFragment
 
 @Module
 abstract class FragmentsModule {

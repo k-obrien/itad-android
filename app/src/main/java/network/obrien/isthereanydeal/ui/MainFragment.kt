@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal
+package network.obrien.isthereanydeal.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,6 +25,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_main.*
+import network.obrien.isthereanydeal.R
 
 class MainFragment : DaggerFragment() {
     override fun onCreateView(

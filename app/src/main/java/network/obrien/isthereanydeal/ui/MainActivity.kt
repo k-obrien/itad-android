@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal
+package network.obrien.isthereanydeal.ui
 
 import android.os.Bundle
 import android.view.*
@@ -23,7 +23,8 @@ import androidx.fragment.app.Fragment
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_placeholder.view.*
-import network.obrien.isthereanydeal.settings.SettingsActivity
+import network.obrien.isthereanydeal.R
+import network.obrien.isthereanydeal.ui.settings.SettingsActivity
 import network.obrien.isthereanydeal.util.transitionToActivity
 
 class MainActivity : DaggerAppCompatActivity() {

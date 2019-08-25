@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="network.obrien.isthereanydeal.settings.SettingsActivity">
+    tools:context="network.obrien.isthereanydeal.ui.settings.SettingsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -45,9 +45,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    <fragment
         android:id="@+id/fragment_settings"
-        android:name="network.obrien.isthereanydeal.settings.SettingsActivity$SettingsFragment"
+        android:name="network.obrien.isthereanydeal.ui.settings.SettingsActivity$SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />

@@ -19,7 +19,7 @@ package network.obrien.isthereanydeal.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import network.obrien.isthereanydeal.MainActivity
+import network.obrien.isthereanydeal.ui.MainActivity
 
 @Module
 abstract class MainActivityModule {

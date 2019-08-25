@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="network.obrien.isthereanydeal.settings.LicenseActivity">
+    tools:context="network.obrien.isthereanydeal.ui.settings.LicenseActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"

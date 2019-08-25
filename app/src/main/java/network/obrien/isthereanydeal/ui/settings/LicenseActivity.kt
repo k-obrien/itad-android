@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.settings
+package network.obrien.isthereanydeal.ui.settings
 
 import android.os.Bundle
 import android.view.MenuItem
