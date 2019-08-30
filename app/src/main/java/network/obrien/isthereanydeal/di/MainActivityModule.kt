@@ -22,7 +22,7 @@ import dagger.android.ContributesAndroidInjector
 import network.obrien.isthereanydeal.ui.MainActivity
 
 @Module
-abstract class MainActivityModule {
+interface MainActivityModule {
     @ContributesAndroidInjector(modules = [FragmentsModule::class])
-    abstract fun contributeMainActivity(): MainActivity
+    fun contributeMainActivity(): MainActivity
 }
