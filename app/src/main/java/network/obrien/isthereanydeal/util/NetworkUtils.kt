@@ -18,9 +18,11 @@
 package network.obrien.isthereanydeal.util
 
 import com.squareup.moshi.Moshi
+import network.obrien.isthereanydeal.data.Resource
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -41,3 +43,16 @@ inline fun <reified T> Retrofit.Builder.service(debug: Boolean, baseUrl: HttpUrl
         .build()
         .create(T::class.java)
 }
+
+/**
+ * Map exceptional API responses to [Resource.Error]s
+ */
+suspend fun <T : Any> requestCatching(request: suspend () -> Resource<T>): Resource<T> =
+    try {
+        request()
+    } catch (e: Exception) {
+        Resource.Error(e)
+    }
+
+val Response<*>.errorString
+    get() = "API request failed -- URL: ${raw().request.url}; Code: ${code()}; Error: ${message()}"
