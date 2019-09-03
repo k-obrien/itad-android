@@ -48,8 +48,8 @@ interface IsThereAnyDealService {
     @GET("v01/deals/list/")
     suspend fun getDeals(
         @Query("key") apiKey: String,
-        @Query("offset") offset: Int = 0,
-        @Query("limit") limit: Int = 20,
+        @Query("offset") dealOffset: Int = 0,
+        @Query("limit") numberOfDeals: Int = 20,
         @Query("region") region: String? = null,
         @Query("country") country: String? = null,
         @Query("shops") stores: String? = null

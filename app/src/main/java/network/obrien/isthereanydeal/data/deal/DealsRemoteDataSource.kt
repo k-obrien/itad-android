@@ -30,13 +30,14 @@ import javax.inject.Inject
 class DealsRemoteDataSource @Inject constructor(private val service: IsThereAnyDealService) {
     suspend fun getDeals(
         apiKey: String,
-        offset: Int = 0,
-        limit: Int = 20,
+        dealOffset: Int = 0,
+        numberOfDeals: Int = 20,
         region: String? = null,
         country: String? = null,
         stores: List<String>? = null
     ): Resource<IsThereAnyDealResponse<DealsMeta, DealsData>> = requestCatching {
-        service.getDeals(apiKey, offset, limit, region, country, stores?.joinToString(","))
+        service
+            .getDeals(apiKey, dealOffset, numberOfDeals, region, country, stores?.joinToString(","))
             .let { response ->
                 response.body()
                     ?.takeIf { response.isSuccessful }?.let { body -> Resource.Success(body) }
