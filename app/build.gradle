@@ -26,12 +26,18 @@ android {
     compileSdkVersion buildConfig.compileSdk
 
     defaultConfig {
-        applicationId "network.obrien.isthereanydeal"
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.targetSdk
+
+        applicationId "network.obrien.isthereanydeal"
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "ITAD_API_KEY", "${property("itad.api.key")}")
+        buildConfigField("String", "ITAD_CLIENT_ID", "${property("itad.client.id")}")
+        buildConfigField("String", "ITAD_CLIENT_SECRET", "${property("itad.client.secret")}")
     }
 
     buildTypes {
@@ -40,8 +46,8 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro",
                     "proguard-okhttp-rules.pro", "proguard-okio-rules.pro", "proguard-retrofit-rules.pro"
-            resValue "string", "app_id", "${defaultConfig.applicationId}"
-            resValue "string", "app_version", "${defaultConfig.versionName}"
+            resValue("string", "app_id", "${defaultConfig.applicationId}")
+            resValue("string", "app_version", "${defaultConfig.versionName}")
         }
 
         debug {
@@ -60,6 +66,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -111,4 +121,8 @@ dependencies {
 
     androidTestImplementation libraries.androidx.test.runner
     androidTestImplementation libraries.androidx.test.junit
+}
+
+String property(String name) {
+    return "\"${project.properties["${android.defaultConfig.applicationId}.${name}"]}\""
 }
