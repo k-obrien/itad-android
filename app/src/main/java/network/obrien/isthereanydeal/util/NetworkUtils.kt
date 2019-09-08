@@ -17,29 +17,31 @@
 
 package network.obrien.isthereanydeal.util
 
-import com.squareup.moshi.Moshi
+import network.obrien.isthereanydeal.BuildConfig
 import network.obrien.isthereanydeal.data.Resource
-import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level
+import retrofit2.Converter
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 
-inline fun <reified T> Retrofit.Builder.service(debug: Boolean, baseUrl: HttpUrl): T {
-    val httpClient = OkHttpClient.Builder()
-
-    if (debug) {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
-        httpClient.addInterceptor(logging)
+fun httpClient(): OkHttpClient = OkHttpClient.Builder()
+    .apply {
+        if (BuildConfig.DEBUG) {
+            addInterceptor(HttpLoggingInterceptor().apply { level = Level.BODY })
+        }
     }
+    .build()
 
-    val moshi = Moshi.Builder().add(BigDecimalAdapter).build()
-
+inline fun <reified T> Retrofit.Builder.service(
+    baseUrl: String,
+    httpClient: OkHttpClient,
+    converterFactories: List<Converter.Factory> = emptyList()
+): T {
     return baseUrl(baseUrl)
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .client(httpClient.build())
+        .client(httpClient)
+        .apply { converterFactories.forEach { factory -> addConverterFactory(factory) } }
         .build()
         .create(T::class.java)
 }
