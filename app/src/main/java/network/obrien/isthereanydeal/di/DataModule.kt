@@ -20,11 +20,9 @@ package network.obrien.isthereanydeal.di
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
+import network.obrien.isthereanydeal.BuildConfig
 import network.obrien.isthereanydeal.data.api.IsThereAnyDealService
-import network.obrien.isthereanydeal.util.BigDecimalAdapter
-import network.obrien.isthereanydeal.util.httpClient
-import network.obrien.isthereanydeal.util.moshiConverterFactory
-import network.obrien.isthereanydeal.util.service
+import network.obrien.isthereanydeal.util.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
@@ -34,9 +32,23 @@ class DataModule {
     fun provideOkHttpClient(): OkHttpClient = httpClient()
 
     @Provides
-    @IsThereAnyDealPublicApi
+    @IsThereAnyDealProtectedApi
+    fun provideOkHttpClient(httpClient: OkHttpClient): OkHttpClient =
+        httpClient.newBuilder().addInterceptor(ApiKeyInterceptor(BuildConfig.ITAD_API_KEY)).build()
+
+    @Provides
     fun provideIsThereAnyDealService(
         httpClient: Lazy<OkHttpClient>
+    ): IsThereAnyDealService = Retrofit.Builder().service(
+        IsThereAnyDealService.ENDPOINT,
+        httpClient.get(),
+        moshiConverterFactory(BigDecimalAdapter)
+    )
+
+    @Provides
+    @IsThereAnyDealProtectedApi
+    fun provideProtectedIsThereAnyDealService(
+        @IsThereAnyDealProtectedApi httpClient: Lazy<OkHttpClient>
     ): IsThereAnyDealService = Retrofit.Builder().service(
         IsThereAnyDealService.ENDPOINT,
         httpClient.get(),

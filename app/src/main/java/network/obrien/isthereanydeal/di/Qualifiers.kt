@@ -23,11 +23,6 @@ import kotlin.annotation.AnnotationRetention.RUNTIME
 @Qualifier
 @MustBeDocumented
 @Retention(RUNTIME)
-annotation class IsThereAnyDealPublicApi
-
-@Qualifier
-@MustBeDocumented
-@Retention(RUNTIME)
 annotation class IsThereAnyDealProtectedApi
 
 @Qualifier
