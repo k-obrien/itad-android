@@ -19,12 +19,22 @@ package network.obrien.isthereanydeal.util
 
 import network.obrien.isthereanydeal.BuildConfig
 import network.obrien.isthereanydeal.data.Resource
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Converter
 import retrofit2.Response
 import retrofit2.Retrofit
+
+class ApiKeyInterceptor(private val apiKey: String) : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): okhttp3.Response =
+        chain.request().run {
+            url.newBuilder().addQueryParameter("key", apiKey).build()
+                .let { url -> newBuilder().url(url).build() }
+                .let { request -> chain.proceed(request) }
+        }
+}
 
 fun httpClient(): OkHttpClient = OkHttpClient.Builder()
     .apply {
