@@ -20,4 +20,4 @@ package network.obrien.isthereanydeal.di
 import dagger.Module
 
 @Module
-object ApplicationModule
+abstract class ApplicationModule
