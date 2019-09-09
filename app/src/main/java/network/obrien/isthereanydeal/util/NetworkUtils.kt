@@ -37,7 +37,7 @@ fun httpClient(): OkHttpClient = OkHttpClient.Builder()
 inline fun <reified T> Retrofit.Builder.service(
     baseUrl: String,
     httpClient: OkHttpClient,
-    converterFactories: List<Converter.Factory> = emptyList()
+    vararg converterFactories: Converter.Factory
 ): T {
     return baseUrl(baseUrl)
         .client(httpClient)

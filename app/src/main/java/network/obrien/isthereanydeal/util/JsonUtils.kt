@@ -23,7 +23,7 @@ import com.squareup.moshi.ToJson
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.math.BigDecimal
 
-fun moshiConverterFactory(adapters: List<Any> = emptyList()): MoshiConverterFactory =
+fun moshiConverterFactory(vararg adapters: Any): MoshiConverterFactory =
     MoshiConverterFactory.create(
         Moshi.Builder().apply { adapters.forEach { adapter -> add(adapter) } }.build()
     )
