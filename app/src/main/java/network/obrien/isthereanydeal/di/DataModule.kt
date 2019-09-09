@@ -25,6 +25,7 @@ import network.obrien.isthereanydeal.data.api.IsThereAnyDealService
 import network.obrien.isthereanydeal.util.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
 @Module
 class DataModule {
@@ -37,6 +38,7 @@ class DataModule {
         httpClient.newBuilder().addInterceptor(ApiKeyInterceptor(BuildConfig.ITAD_API_KEY)).build()
 
     @Provides
+    @Singleton
     fun provideIsThereAnyDealService(
         httpClient: Lazy<OkHttpClient>
     ): IsThereAnyDealService = Retrofit.Builder().service(
@@ -46,6 +48,7 @@ class DataModule {
     )
 
     @Provides
+    @Singleton
     @IsThereAnyDealProtectedApi
     fun provideProtectedIsThereAnyDealService(
         @IsThereAnyDealProtectedApi httpClient: Lazy<OkHttpClient>
