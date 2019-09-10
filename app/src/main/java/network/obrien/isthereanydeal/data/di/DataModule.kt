@@ -15,14 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.di
+package network.obrien.isthereanydeal.data.di
 
 import dagger.Lazy
 import dagger.Module
 import dagger.Provides
 import network.obrien.isthereanydeal.BuildConfig
 import network.obrien.isthereanydeal.data.api.IsThereAnyDealService
-import network.obrien.isthereanydeal.util.*
+import network.obrien.isthereanydeal.data.utils.QueryInterceptor
+import network.obrien.isthereanydeal.data.utils.httpClient
+import network.obrien.isthereanydeal.data.utils.service
+import network.obrien.isthereanydeal.di.IsThereAnyDealProtectedApi
+import network.obrien.isthereanydeal.util.BigDecimalAdapter
+import network.obrien.isthereanydeal.util.moshiConverterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Singleton
@@ -34,8 +39,10 @@ class DataModule {
 
     @Provides
     @IsThereAnyDealProtectedApi
-    fun provideOkHttpClient(httpClient: OkHttpClient): OkHttpClient = httpClient.newBuilder()
-        .addInterceptor(QueryInterceptor("key" to BuildConfig.ITAD_API_KEY)).build()
+    fun provideProtectedOkHttpClient(httpClient: OkHttpClient): OkHttpClient = httpClient
+        .newBuilder()
+        .addInterceptor(QueryInterceptor("key" to BuildConfig.ITAD_API_KEY))
+        .build()
 
     @Provides
     @Singleton
