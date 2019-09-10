@@ -22,14 +22,15 @@ import network.obrien.isthereanydeal.data.api.IsThereAnyDealService
 import network.obrien.isthereanydeal.data.api.model.IsThereAnyDealResponse
 import network.obrien.isthereanydeal.data.deal.model.DealsData
 import network.obrien.isthereanydeal.data.deal.model.DealsMeta
-import network.obrien.isthereanydeal.util.errorString
-import network.obrien.isthereanydeal.util.requestCatching
+import network.obrien.isthereanydeal.data.utils.errorString
+import network.obrien.isthereanydeal.data.utils.requestCatching
 import java.io.IOException
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class DealsRemoteDataSource @Inject constructor(private val service: IsThereAnyDealService) {
     suspend fun getDeals(
-        apiKey: String,
         dealOffset: Int = 0,
         numberOfDeals: Int = 20,
         region: String? = null,
@@ -37,7 +38,7 @@ class DealsRemoteDataSource @Inject constructor(private val service: IsThereAnyD
         stores: List<String>? = null
     ): Resource<IsThereAnyDealResponse<DealsMeta, DealsData>> = requestCatching {
         service
-            .getDeals(apiKey, dealOffset, numberOfDeals, region, country, stores?.joinToString(","))
+            .getDeals(dealOffset, numberOfDeals, region, country, stores?.joinToString(","))
             .let { response ->
                 response.body()
                     ?.takeIf { response.isSuccessful }?.let { body -> Resource.Success(body) }
