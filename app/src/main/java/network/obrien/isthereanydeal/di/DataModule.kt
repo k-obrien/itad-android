@@ -34,8 +34,8 @@ class DataModule {
 
     @Provides
     @IsThereAnyDealProtectedApi
-    fun provideOkHttpClient(httpClient: OkHttpClient): OkHttpClient =
-        httpClient.newBuilder().addInterceptor(ApiKeyInterceptor(BuildConfig.ITAD_API_KEY)).build()
+    fun provideOkHttpClient(httpClient: OkHttpClient): OkHttpClient = httpClient.newBuilder()
+        .addInterceptor(QueryInterceptor("key" to BuildConfig.ITAD_API_KEY)).build()
 
     @Provides
     @Singleton

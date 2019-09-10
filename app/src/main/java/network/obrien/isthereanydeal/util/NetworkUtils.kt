@@ -27,10 +27,11 @@ import retrofit2.Converter
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class ApiKeyInterceptor(private val apiKey: String) : Interceptor {
+class QueryInterceptor(private vararg val queries: Pair<String, String>) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response =
         chain.request().run {
-            url.newBuilder().addQueryParameter("key", apiKey).build()
+            url.newBuilder()
+                .apply { queries.forEach { addQueryParameter(it.first, it.second) } }.build()
                 .let { url -> newBuilder().url(url).build() }
                 .let { request -> chain.proceed(request) }
         }
@@ -48,13 +49,11 @@ inline fun <reified T> Retrofit.Builder.service(
     baseUrl: String,
     httpClient: OkHttpClient,
     vararg converterFactories: Converter.Factory
-): T {
-    return baseUrl(baseUrl)
-        .client(httpClient)
-        .apply { converterFactories.forEach { factory -> addConverterFactory(factory) } }
-        .build()
-        .create(T::class.java)
-}
+): T = baseUrl(baseUrl)
+    .client(httpClient)
+    .apply { converterFactories.forEach { factory -> addConverterFactory(factory) } }
+    .build()
+    .create(T::class.java)
 
 /**
  * Map exceptional API responses to [Resource.Error]s
