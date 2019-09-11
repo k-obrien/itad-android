@@ -84,6 +84,10 @@ dependencies {
     implementation libraries.androidx.paging
     implementation libraries.androidx.preference
 
+    implementation libraries.androidx.lifecycle.runtime
+    implementation libraries.androidx.lifecycle.viewModel
+    kapt libraries.androidx.lifecycle.compiler
+
     implementation libraries.androidx.navigation.fragment
     implementation libraries.androidx.navigation.ui
 
@@ -117,9 +121,18 @@ dependencies {
 
     testImplementation libraries.junit
     testImplementation libraries.truth
+    testImplementation libraries.kotlin.coroutines.test
+    testImplementation libraries.mockito
+    testImplementation libraries.mockitoKotlin
 
     androidTestImplementation libraries.androidx.test.runner
     androidTestImplementation libraries.androidx.test.junit
+    androidTestImplementation libraries.androidx.test.rules
+    androidTestImplementation libraries.androidx.lifecycle.test
+    androidTestImplementation libraries.truth
+    androidTestImplementation libraries.kotlin.coroutines.test
+    androidTestImplementation libraries.mockito
+    androidTestImplementation libraries.mockitoKotlin
 }
 
 String property(String name) {
