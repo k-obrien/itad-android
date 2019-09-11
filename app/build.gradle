@@ -102,7 +102,6 @@ dependencies {
 
     implementation libraries.okhttp.client
     implementation libraries.okhttp.loggingInterceptor
-    implementation libraries.okhttp.mockWebServer
 
     implementation libraries.moshi.parser
     kapt libraries.moshi.codegen

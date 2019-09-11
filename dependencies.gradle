@@ -104,7 +104,6 @@ ext.libraries.moshi.codegen = "com.squareup.moshi:moshi-kotlin-codegen:${version
 ext.libraries.okhttp = [:]
 ext.libraries.okhttp.client = "com.squareup.okhttp3:okhttp:${versions.okhttp}"
 ext.libraries.okhttp.loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
-ext.libraries.okhttp.mockWebServer = "com.squareup.okhttp3:mockwebserver:${versions.okhttp}"
 
 ext.libraries.retrofit = [:]
 ext.libraries.retrofit.client = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
