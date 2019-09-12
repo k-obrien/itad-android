@@ -19,7 +19,7 @@ def versions = [:]
 versions.android = "3.5.0"
 versions.anko = "0.10.8"
 versions.dagger = "2.24"
-versions.junit = "4.12"
+versions.junit = "5.5.2"
 versions.kotlin = "1.3.50"
 versions.kotlinCoroutines = "1.3.0"
 versions.leakCanary = "2.0-beta-3"
@@ -62,7 +62,7 @@ ext.gradlePlugins.versions = "com.github.ben-manes:gradle-versions-plugin:${vers
 
 ext.libraries = [:]
 ext.libraries.anko = "org.jetbrains.anko:anko:${versions.anko}"
-ext.libraries.junit = "junit:junit:${versions.junit}"
+ext.libraries.junit = "org.junit.jupiter:junit-jupiter-api:${versions.junit}"
 ext.libraries.leakCanary = "com.squareup.leakcanary:leakcanary-android:${versions.leakCanary}"
 ext.libraries.material = "com.google.android.material:material:${versions.material}"
 ext.libraries.mockito = "org.mockito:mockito-core:${versions.mockito}"
