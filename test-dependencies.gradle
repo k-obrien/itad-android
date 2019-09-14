@@ -1,0 +1,54 @@
+/*
+ * Copyright (C) 2018-present Kieran O'Brien
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+def versions = [:]
+versions.junit = "5.5.2"
+versions.kotlinCoroutines = "1.3.0"
+versions.mockito = "3.0.0"
+versions.mockitoKotlin = "2.2.0"
+versions.truth = "1.0"
+
+versions.androidx = [:]
+versions.androidx.core = "1.0.2"
+versions.androidx.junit = "1.1.1"
+versions.androidx.lifecycle = "2.1.0"
+versions.androidx.rules = "1.1.1"
+versions.androidx.runner = "1.2.0"
+versions.androidx.truth = "1.0.0"
+
+
+ext.libraries.test = [:]
+ext.libraries.test.kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinCoroutines}"
+ext.libraries.test.truth = "com.google.truth:truth:${versions.truth}"
+
+ext.libraries.test.junit = [:]
+ext.libraries.test.junit.api = "org.junit.jupiter:junit-jupiter-api:${versions.junit}"
+ext.libraries.test.junit.runtime = "org.junit.jupiter:junit-jupiter-engine:${versions.junit}"
+
+ext.libraries.test.mockito = [:]
+ext.libraries.test.mockito.runtime = "org.mockito:mockito-core:${versions.mockito}"
+ext.libraries.test.mockito.androidRuntime = "org.mockito:mockito-android:${versions.mockito}"
+ext.libraries.test.mockito.junit5 = "org.mockito:mockito-junit-jupiter:${versions.mockito}"
+ext.libraries.test.mockito.mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}"
+
+ext.libraries.test.androidx = [:]
+ext.libraries.test.androidx.core = "androidx.test:core:${versions.androidx.core}"
+ext.libraries.test.androidx.junit = "androidx.test.ext:junit:${versions.androidx.junit}"
+ext.libraries.test.androidx.lifecycle = "androidx.arch.core:core-testing:${versions.androidx.lifecycle}"
+ext.libraries.test.androidx.rules = "androidx.test:rules:${versions.androidx.rules}"
+ext.libraries.test.androidx.runner = "androidx.test:runner:${versions.androidx.runner}"
+ext.libraries.test.androidx.truth = "androidx.test.ext:truth:${versions.androidx.truth}"

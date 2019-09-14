@@ -21,6 +21,7 @@ apply plugin: "com.github.ben-manes.versions"
 
 buildscript {
     apply from: file("dependencies.gradle")
+    apply from: file("test-dependencies.gradle")
 
     ext.buildConfig = [
             "compileSdk": 28,

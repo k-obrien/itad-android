@@ -71,6 +71,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    testOptions.unitTests.all {
+        useJUnitPlatform()
+    }
 }
 
 dependencies {
@@ -119,20 +123,24 @@ dependencies {
 
     debugImplementation libraries.leakCanary
 
-    testImplementation libraries.junit
-    testImplementation libraries.truth
-    testImplementation libraries.kotlin.coroutines.test
-    testImplementation libraries.mockito
-    testImplementation libraries.mockitoKotlin
+    testRuntimeOnly libraries.test.junit.runtime
+    testImplementation libraries.test.junit.api
+    testImplementation libraries.test.truth
+    testImplementation libraries.test.kotlinCoroutines
+    testImplementation libraries.test.mockito.runtime
+    testImplementation libraries.test.mockito.junit5
+    testImplementation libraries.test.mockito.mockitoKotlin
 
-    androidTestImplementation libraries.androidx.test.runner
-    androidTestImplementation libraries.androidx.test.junit
-    androidTestImplementation libraries.androidx.test.rules
-    androidTestImplementation libraries.androidx.lifecycle.test
-    androidTestImplementation libraries.truth
-    androidTestImplementation libraries.kotlin.coroutines.test
-    androidTestImplementation libraries.mockito
-    androidTestImplementation libraries.mockitoKotlin
+    androidTestImplementation libraries.test.androidx.core
+    androidTestImplementation libraries.test.androidx.runner
+    androidTestImplementation libraries.test.androidx.rules
+    androidTestImplementation libraries.test.androidx.junit
+    androidTestImplementation libraries.test.androidx.truth
+    androidTestImplementation libraries.test.truth
+    androidTestImplementation libraries.test.androidx.lifecycle
+    androidTestImplementation libraries.test.kotlinCoroutines
+    androidTestImplementation libraries.test.mockito.androidRuntime
+    androidTestImplementation libraries.test.mockito.mockitoKotlin
 }
 
 String property(String name) {
