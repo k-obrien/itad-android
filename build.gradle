@@ -40,10 +40,6 @@ buildscript {
         classpath gradlePlugins.safeArgs
         classpath gradlePlugins.versions
     }
-
-    repositories {
-        google()
-    }
 }
 
 allprojects {

@@ -37,6 +37,7 @@ ext.libraries.test.truth = "com.google.truth:truth:${versions.truth}"
 
 ext.libraries.test.junit = [:]
 ext.libraries.test.junit.api = "org.junit.jupiter:junit-jupiter-api:${versions.junit}"
+ext.libraries.test.junit.params = "org.junit.jupiter:junit-jupiter-params:${versions.junit}"
 ext.libraries.test.junit.runtime = "org.junit.jupiter:junit-jupiter-engine:${versions.junit}"
 
 ext.libraries.test.mockito = [:]
