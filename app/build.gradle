@@ -38,6 +38,12 @@ android {
         buildConfigField("String", "ITAD_API_KEY", "${property("itad.api.key")}")
         buildConfigField("String", "ITAD_CLIENT_ID", "${property("itad.client.id")}")
         buildConfigField("String", "ITAD_CLIENT_SECRET", "${property("itad.client.secret")}")
+
+        javaCompileOptions.annotationProcessorOptions.arguments = [
+                "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                "room.incremental"     : "true",
+                "room.expandProjection": "true"
+        ]
     }
 
     buildTypes {
@@ -63,13 +69,13 @@ android {
         enabled = true
     }
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 
     testOptions.unitTests.all {
@@ -94,6 +100,10 @@ dependencies {
 
     implementation libraries.androidx.navigation.fragment
     implementation libraries.androidx.navigation.ui
+
+    implementation libraries.androidx.room.runtime
+    implementation libraries.androidx.room.ktxCoroutines
+    kapt libraries.androidx.room.compiler
 
     implementation libraries.material
 
@@ -139,6 +149,7 @@ dependencies {
     androidTestImplementation libraries.test.androidx.truth
     androidTestImplementation libraries.test.truth
     androidTestImplementation libraries.test.androidx.lifecycle
+    androidTestImplementation libraries.test.androidx.room
     androidTestImplementation libraries.test.kotlinCoroutines
     androidTestImplementation libraries.test.mockito.androidRuntime
     androidTestImplementation libraries.test.mockito.mockitoKotlin
