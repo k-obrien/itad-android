@@ -129,6 +129,9 @@ dependencies {
     implementation libraries.retrofit.client
     implementation libraries.retrofit.jsonConverter
 
+    implementation libraries.threetenbp.lib
+    implementation libraries.threetenbp.android
+
     implementation libraries.timber
 
     debugImplementation libraries.leakCanary
@@ -141,6 +144,7 @@ dependencies {
     testImplementation libraries.test.mockito.runtime
     testImplementation libraries.test.mockito.junit5
     testImplementation libraries.test.mockito.mockitoKotlin
+    testImplementation libraries.test.threetenbp
 
     androidTestImplementation libraries.test.androidx.core
     androidTestImplementation libraries.test.androidx.runner

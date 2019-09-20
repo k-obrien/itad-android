@@ -20,6 +20,7 @@ versions.junit = "5.5.2"
 versions.kotlinCoroutines = "1.3.0"
 versions.mockito = "3.0.0"
 versions.mockitoKotlin = "2.2.0"
+versions.threetenbp = "1.4.0"
 versions.truth = "1.0"
 
 versions.androidx = [:]
@@ -34,6 +35,7 @@ versions.androidx.truth = "1.0.0"
 
 ext.libraries.test = [:]
 ext.libraries.test.kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinCoroutines}"
+ext.libraries.test.threetenbp = "org.threeten:threetenbp:${versions.threetenbp}"
 ext.libraries.test.truth = "com.google.truth:truth:${versions.truth}"
 
 ext.libraries.test.junit = [:]

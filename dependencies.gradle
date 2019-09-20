@@ -43,6 +43,10 @@ versions.androidx.paging = "2.1.0"
 versions.androidx.preference = "1.0.0"
 versions.androidx.room = "2.1.0"
 
+versions.threetenbp = [:]
+versions.threetenbp.lib = "1.4.0"
+versions.threetenbp.android = "1.2.1"
+
 
 ext.gradlePlugins = [:]
 ext.gradlePlugins.android = "com.android.tools.build:gradle:${versions.android}"
@@ -95,7 +99,6 @@ ext.libraries.kotlin.coroutines = [:]
 ext.libraries.kotlin.coroutines.core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}"
 ext.libraries.kotlin.coroutines.android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}"
 
-
 ext.libraries.moshi = [:]
 ext.libraries.moshi.parser = "com.squareup.moshi:moshi:${versions.moshi}"
 ext.libraries.moshi.codegen = "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"
@@ -107,6 +110,10 @@ ext.libraries.okhttp.loggingInterceptor = "com.squareup.okhttp3:logging-intercep
 ext.libraries.retrofit = [:]
 ext.libraries.retrofit.client = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
 ext.libraries.retrofit.jsonConverter = "com.squareup.retrofit2:converter-moshi:${versions.retrofit}"
+
+ext.libraries.threetenbp = [:]
+ext.libraries.threetenbp.lib = "org.threeten:threetenbp:${versions.threetenbp.lib}:no-tzdb"
+ext.libraries.threetenbp.android = "com.jakewharton.threetenabp:threetenabp:${versions.threetenbp.android}"
 
 
 static def addRepos(RepositoryHandler handler) {
