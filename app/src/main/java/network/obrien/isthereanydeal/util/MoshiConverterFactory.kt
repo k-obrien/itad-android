@@ -17,21 +17,10 @@
 
 package network.obrien.isthereanydeal.util
 
-import com.squareup.moshi.FromJson
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.ToJson
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.math.BigDecimal
 
-fun moshiConverterFactory(vararg adapters: Any): MoshiConverterFactory =
-    MoshiConverterFactory.create(
-        Moshi.Builder().apply { adapters.forEach { adapter -> add(adapter) } }.build()
-    )
-
-object BigDecimalAdapter {
-    @FromJson
-    fun fromJson(json: String): BigDecimal = BigDecimal(json)
-
-    @ToJson
-    fun toJson(bigDecimal: BigDecimal): String = bigDecimal.toString()
-}
+fun moshiConverterFactory(vararg adapters: Any) = Moshi.Builder()
+    .apply { adapters.forEach { adapter -> add(adapter) } }
+    .build()
+    .let { moshi -> MoshiConverterFactory.create(moshi) }
