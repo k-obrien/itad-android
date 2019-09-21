@@ -22,9 +22,9 @@ import dagger.Module
 import dagger.Provides
 import network.obrien.isthereanydeal.BuildConfig
 import network.obrien.isthereanydeal.data.api.IsThereAnyDealService
-import network.obrien.isthereanydeal.data.utils.QueryInterceptor
-import network.obrien.isthereanydeal.data.utils.httpClient
-import network.obrien.isthereanydeal.data.utils.service
+import network.obrien.isthereanydeal.data.util.QueryInterceptor
+import network.obrien.isthereanydeal.data.util.httpClient
+import network.obrien.isthereanydeal.data.util.service
 import network.obrien.isthereanydeal.di.IsThereAnyDealProtectedApi
 import network.obrien.isthereanydeal.util.BigDecimalAdapter
 import network.obrien.isthereanydeal.util.moshiConverterFactory

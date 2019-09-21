@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.data.utils
+package network.obrien.isthereanydeal.data.util
 
 import network.obrien.isthereanydeal.BuildConfig
 import network.obrien.isthereanydeal.data.Resource

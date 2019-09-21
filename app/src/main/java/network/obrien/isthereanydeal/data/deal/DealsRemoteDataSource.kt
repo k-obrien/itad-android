@@ -22,8 +22,8 @@ import network.obrien.isthereanydeal.data.api.IsThereAnyDealService
 import network.obrien.isthereanydeal.data.api.model.IsThereAnyDealResponse
 import network.obrien.isthereanydeal.data.deal.model.DealsData
 import network.obrien.isthereanydeal.data.deal.model.DealsMeta
-import network.obrien.isthereanydeal.data.utils.errorString
-import network.obrien.isthereanydeal.data.utils.requestCatching
+import network.obrien.isthereanydeal.data.util.errorString
+import network.obrien.isthereanydeal.data.util.requestCatching
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
