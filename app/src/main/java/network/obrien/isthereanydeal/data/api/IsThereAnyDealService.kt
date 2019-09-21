@@ -23,6 +23,7 @@ import network.obrien.isthereanydeal.data.deal.model.DealsMeta
 import network.obrien.isthereanydeal.data.region.model.RegionByCode
 import network.obrien.isthereanydeal.data.store.model.Stores
 import network.obrien.isthereanydeal.data.store.model.StoresMeta
+import network.obrien.isthereanydeal.data.util.RetrofitService
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -32,7 +33,7 @@ import retrofit2.http.Query
  *
  * https://itad.docs.apiary.io/
  */
-interface IsThereAnyDealService {
+interface IsThereAnyDealService : RetrofitService {
     @GET("v01/web/regions/")
     suspend fun getRegions(): Response<IsThereAnyDealResponse<Nothing, RegionByCode>>
 

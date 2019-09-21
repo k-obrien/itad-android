@@ -21,19 +21,16 @@ import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.runBlocking
-import network.obrien.isthereanydeal.data.Resource
 import network.obrien.isthereanydeal.data.api.IsThereAnyDealService
+import network.obrien.isthereanydeal.data.util.Resource
 import network.obrien.isthereanydeal.dealsResponse
 import network.obrien.isthereanydeal.errorResponseBody
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.junit.jupiter.MockitoExtension
 import retrofit2.Response
 import java.io.IOException
 
-@ExtendWith(MockitoExtension::class)
 class DealsRemoteDataSourceTest {
     private lateinit var service: IsThereAnyDealService
     private lateinit var dataSource: DealsRemoteDataSource

@@ -17,13 +17,13 @@
 
 package network.obrien.isthereanydeal.data.deal
 
-import network.obrien.isthereanydeal.data.Resource
 import network.obrien.isthereanydeal.data.api.IsThereAnyDealService
 import network.obrien.isthereanydeal.data.api.model.IsThereAnyDealResponse
 import network.obrien.isthereanydeal.data.deal.model.DealsData
 import network.obrien.isthereanydeal.data.deal.model.DealsMeta
-import network.obrien.isthereanydeal.data.util.errorString
+import network.obrien.isthereanydeal.data.util.Resource
 import network.obrien.isthereanydeal.data.util.requestCatching
+import network.obrien.isthereanydeal.data.util.summary
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -36,13 +36,12 @@ class DealsRemoteDataSource @Inject constructor(private val service: IsThereAnyD
         region: String? = null,
         country: String? = null,
         stores: List<String>? = null
-    ): Resource<IsThereAnyDealResponse<DealsMeta, DealsData>> = requestCatching {
-        service
-            .getDeals(dealOffset, numberOfDeals, region, country, stores?.joinToString(","))
+    ): Resource<IsThereAnyDealResponse<DealsMeta, DealsData>> = service.requestCatching {
+        getDeals(dealOffset, numberOfDeals, region, country, stores?.joinToString(","))
             .let { response ->
                 response.body()
                     ?.takeIf { response.isSuccessful }?.let { body -> Resource.Success(body) }
-                    ?: Resource.Error(IOException(response.errorString))
+                    ?: Resource.Error(IOException(response.summary))
             }
     }
 }

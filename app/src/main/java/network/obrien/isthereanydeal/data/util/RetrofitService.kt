@@ -17,35 +17,17 @@
 
 package network.obrien.isthereanydeal.data.util
 
-import network.obrien.isthereanydeal.BuildConfig
-import network.obrien.isthereanydeal.data.Resource
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Converter
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class QueryInterceptor(private vararg val queries: Pair<String, String>) : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): okhttp3.Response =
-        chain.request().run {
-            url.newBuilder()
-                .apply { queries.forEach { addQueryParameter(it.first, it.second) } }.build()
-                .let { url -> newBuilder().url(url).build() }
-                .let { request -> chain.proceed(request) }
-        }
-}
+interface RetrofitService
 
-fun httpClient(): OkHttpClient = OkHttpClient.Builder()
-    .apply {
-        if (BuildConfig.DEBUG) {
-            addInterceptor(HttpLoggingInterceptor().apply { level = Level.BODY })
-        }
-    }
-    .build()
-
-inline fun <reified T> Retrofit.Builder.service(
+/**
+ * Build a retrofit service and add the provided converter factories
+ */
+inline fun <reified T : RetrofitService> Retrofit.Builder.service(
     baseUrl: String,
     httpClient: OkHttpClient,
     vararg converterFactories: Converter.Factory
@@ -56,14 +38,14 @@ inline fun <reified T> Retrofit.Builder.service(
     .create(T::class.java)
 
 /**
- * Map exceptional API responses to [Resource.Error]s
+ * Map an exceptional API [Response] to [Resource.Error]
  */
-suspend fun <T : Any> requestCatching(request: suspend () -> Resource<T>): Resource<T> =
+inline fun <S : RetrofitService, T : Any> S.requestCatching(request: S.() -> Resource<T>): Resource<T> =
     try {
         request()
     } catch (e: Exception) {
         Resource.Error(e)
     }
 
-val Response<*>.errorString
-    get() = "API request failed -- URL: ${raw().request.url}; Code: ${code()}; Error: ${message()}"
+val Response<*>.summary
+    get() = "API request ${if (isSuccessful && body() != null) "succeeded" else "failed"} -- URL: ${raw().request.url}; Code: ${code()}; Message: ${message()}"

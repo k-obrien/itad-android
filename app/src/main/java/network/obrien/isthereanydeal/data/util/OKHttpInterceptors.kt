@@ -15,9 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package network.obrien.isthereanydeal.data
+package network.obrien.isthereanydeal.data.util
 
-sealed class Resource<out T : Any> {
-    data class Success<out T : Any>(val data: T) : Resource<T>()
-    data class Error(val exception: Exception) : Resource<Nothing>()
+import okhttp3.Interceptor
+
+class QueryInterceptor(private vararg val queries: Pair<String, String>) : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): okhttp3.Response = chain.request().run {
+        url.newBuilder()
+            .apply { queries.forEach { addQueryParameter(it.first, it.second) } }.build()
+            .let { url -> newBuilder().url(url).build() }
+            .let { request -> chain.proceed(request) }
+    }
 }
