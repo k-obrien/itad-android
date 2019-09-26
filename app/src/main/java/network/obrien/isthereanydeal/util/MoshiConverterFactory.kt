@@ -20,7 +20,7 @@ package network.obrien.isthereanydeal.util
 import com.squareup.moshi.Moshi
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-fun moshiConverterFactory(vararg adapters: Any) = Moshi.Builder()
+fun moshiConverterFactory(vararg adapters: Any): MoshiConverterFactory = Moshi.Builder()
     .apply { adapters.forEach { adapter -> add(adapter) } }
     .build()
     .let { moshi -> MoshiConverterFactory.create(moshi) }
