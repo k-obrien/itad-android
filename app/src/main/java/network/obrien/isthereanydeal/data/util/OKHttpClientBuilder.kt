@@ -23,7 +23,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 
 /**
- * Build an OkHttpClient and add a logging interceptor for debug builds
+ * Build an [OkHttpClient] and add a [HttpLoggingInterceptor] for debug builds
  */
 fun httpClient(): OkHttpClient = OkHttpClient.Builder()
     .addInterceptor(HttpLoggingInterceptor().apply { if (BuildConfig.DEBUG) level = Level.BODY })

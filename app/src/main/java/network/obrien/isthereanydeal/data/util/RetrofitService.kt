@@ -25,7 +25,7 @@ import retrofit2.Retrofit
 interface RetrofitService
 
 /**
- * Build a retrofit service and add the provided converter factories
+ * Build a [Retrofit] service and add the provided [Converter.Factory]s
  */
 inline fun <reified T : RetrofitService> Retrofit.Builder.service(
     baseUrl: String,
@@ -38,7 +38,7 @@ inline fun <reified T : RetrofitService> Retrofit.Builder.service(
     .create(T::class.java)
 
 /**
- * Map an exceptional API [Response] to [Resource.Error]
+ * Map an exceptional Retrofit [Response] to [Resource.Error]
  */
 inline fun <S : RetrofitService, T : Any> S.requestCatching(request: S.() -> Resource<T>): Resource<T> =
     try {
@@ -47,5 +47,8 @@ inline fun <S : RetrofitService, T : Any> S.requestCatching(request: S.() -> Res
         Resource.Error(e)
     }
 
+/**
+ * Summarise a Retrofit [Response] for logging purposes
+ */
 val Response<*>.summary
     get() = "API request ${if (isSuccessful && body() != null) "succeeded" else "failed"} -- URL: ${raw().request.url}; Code: ${code()}; Message: ${message()}"

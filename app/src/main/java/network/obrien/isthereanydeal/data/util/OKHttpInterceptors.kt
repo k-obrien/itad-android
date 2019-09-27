@@ -19,6 +19,9 @@ package network.obrien.isthereanydeal.data.util
 
 import okhttp3.Interceptor
 
+/**
+ * An [Interceptor] that adds one or more query parameters to the request
+ */
 class QueryInterceptor(private vararg val queries: Pair<String, String>) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response = chain.request().run {
         url.newBuilder()

@@ -29,7 +29,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * IsThereAnyDeal API
+ * A Retrofit service that models the IsThereAnyDeal API
  *
  * https://itad.docs.apiary.io/
  */
