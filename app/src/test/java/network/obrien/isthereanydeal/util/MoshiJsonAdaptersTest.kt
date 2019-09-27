@@ -26,6 +26,7 @@ internal class MoshiJsonAdaptersTest {
     @Test
     @DisplayName("Given a valid string representation of a decimal number, then the result is a long")
     fun priceAdapter_fromJson() = with(PriceAdapter()) {
+        assertThat(fromJson(PRICE_ONLY_DECIMALS_STRING)).isEqualTo(PRICE_ONLY_DECIMALS_LONG)
         assertThat(fromJson(PRICE_ZERO_DECIMALS_STRING)).isEqualTo(PRICE_ZERO_DECIMALS_LONG)
         assertThat(fromJson(PRICE_ONE_DECIMAL_STRING)).isEqualTo(PRICE_ONE_DECIMAL_LONG)
         assertThat(fromJson(PRICE_TWO_DECIMALS_STRING)).isEqualTo(PRICE_TWO_DECIMALS_LONG)
@@ -35,6 +36,7 @@ internal class MoshiJsonAdaptersTest {
     @Test
     @DisplayName("Given a long, then the result is a valid string representation of a decimal number")
     fun priceAdapter_toJson() = with(PriceAdapter()) {
+        assertThat(toJson(PRICE_ONLY_DECIMALS_LONG)).isEqualTo(PRICE_ONLY_DECIMALS_STRING)
         assertThat(toJson(PRICE_ZERO_DECIMALS_LONG)).isEqualTo(PRICE_ZERO_DECIMALS_STRING)
         assertThat(toJson(PRICE_ONE_DECIMAL_LONG)).isEqualTo(PRICE_ONE_DECIMAL_STRING)
         assertThat(toJson(PRICE_TWO_DECIMALS_LONG)).isEqualTo(PRICE_TWO_DECIMALS_STRING)

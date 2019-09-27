@@ -24,11 +24,13 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody
 import okhttp3.ResponseBody.Companion.toResponseBody
 
+const val PRICE_ONLY_DECIMALS_STRING: String = "0.96"
 const val PRICE_ZERO_DECIMALS_STRING: String = "96"
 const val PRICE_ONE_DECIMAL_STRING: String = "96.8"
 const val PRICE_TWO_DECIMALS_STRING: String = "96.85"
 const val PRICE_THREE_DECIMALS_STRING: String = "96.854"
 
+const val PRICE_ONLY_DECIMALS_LONG: Long = 96
 const val PRICE_ZERO_DECIMALS_LONG: Long = 9600
 const val PRICE_ONE_DECIMAL_LONG: Long = 9680
 const val PRICE_TWO_DECIMALS_LONG: Long = 9685
