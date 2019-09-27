@@ -23,7 +23,15 @@ import network.obrien.isthereanydeal.data.store.model.Store
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody
 import okhttp3.ResponseBody.Companion.toResponseBody
-import java.math.BigDecimal
+
+const val PRICE_ZERO_DECIMALS_STRING: String = "96"
+const val PRICE_ONE_DECIMAL_STRING: String = "96.8"
+const val PRICE_TWO_DECIMALS_STRING: String = "96.85"
+const val PRICE_THREE_DECIMALS_STRING: String = "96.854"
+
+const val PRICE_ZERO_DECIMALS_LONG: Long = 9600
+const val PRICE_ONE_DECIMAL_LONG: Long = 9680
+const val PRICE_TWO_DECIMALS_LONG: Long = 9685
 
 val store: Store = Store(
     id = "store",
@@ -40,9 +48,9 @@ val links: DealLinks = DealLinks(
 val dealOne: Deal = Deal(
     gameId = "classicgame",
     gameTitle = "Classic Game",
-    discountPrice = BigDecimal(1),
-    regularPrice = BigDecimal(10),
-    discountPercent = 90,
+    discountPrice = 2647,
+    regularPrice = 9685,
+    discountPercent = 73,
     timeAddedSecondsUtc = 1568289504,
     store = store,
     drm = drm,
@@ -52,8 +60,8 @@ val dealOne: Deal = Deal(
 val dealTwo: Deal = Deal(
     gameId = "aaagame",
     gameTitle = "AAA Game",
-    discountPrice = BigDecimal(80),
-    regularPrice = BigDecimal(100),
+    discountPrice = 8000,
+    regularPrice = 10000,
     discountPercent = 20,
     timeAddedSecondsUtc = 1568289504,
     store = store,
@@ -61,9 +69,9 @@ val dealTwo: Deal = Deal(
     links = links
 )
 
-val meta: DealsMeta = DealsMeta(currency = "AUD")
+val dealsMeta: DealsMeta = DealsMeta(currency = "AUD")
 
 val dealsResponse: IsThereAnyDealResponse<DealsMeta, DealsData> =
-    IsThereAnyDealResponse(meta = meta, data = DealsData(2, listOf(dealOne, dealTwo)))
+    IsThereAnyDealResponse(meta = dealsMeta, data = DealsData(2, listOf(dealOne, dealTwo)))
 
 val errorResponseBody: ResponseBody = "Error".toResponseBody("".toMediaTypeOrNull())

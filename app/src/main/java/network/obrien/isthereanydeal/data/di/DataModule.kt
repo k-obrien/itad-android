@@ -26,7 +26,7 @@ import network.obrien.isthereanydeal.data.util.QueryInterceptor
 import network.obrien.isthereanydeal.data.util.httpClient
 import network.obrien.isthereanydeal.data.util.service
 import network.obrien.isthereanydeal.di.IsThereAnyDealProtectedApi
-import network.obrien.isthereanydeal.util.BigDecimalAdapter
+import network.obrien.isthereanydeal.util.PriceAdapter
 import network.obrien.isthereanydeal.util.moshiConverterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -51,7 +51,7 @@ class DataModule {
     ): IsThereAnyDealService = Retrofit.Builder().service(
         IsThereAnyDealService.ENDPOINT,
         httpClient.get(),
-        moshiConverterFactory(BigDecimalAdapter)
+        moshiConverterFactory(PriceAdapter())
     )
 
     @Provides
@@ -62,6 +62,6 @@ class DataModule {
     ): IsThereAnyDealService = Retrofit.Builder().service(
         IsThereAnyDealService.ENDPOINT,
         httpClient.get(),
-        moshiConverterFactory(BigDecimalAdapter)
+        moshiConverterFactory(PriceAdapter())
     )
 }

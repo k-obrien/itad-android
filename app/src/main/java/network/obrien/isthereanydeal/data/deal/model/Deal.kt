@@ -20,7 +20,7 @@ package network.obrien.isthereanydeal.data.deal.model
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import network.obrien.isthereanydeal.data.store.model.Store
-import java.math.BigDecimal
+import network.obrien.isthereanydeal.util.Price
 
 typealias DrmPlatforms = List<String>
 
@@ -28,8 +28,8 @@ typealias DrmPlatforms = List<String>
 data class Deal(
     @field:Json(name = "plain") val gameId: String,
     @field:Json(name = "title") val gameTitle: String,
-    @field:Json(name = "price_new") val discountPrice: BigDecimal,
-    @field:Json(name = "price_old") val regularPrice: BigDecimal,
+    @field:Json(name = "price_new") @Price val discountPrice: Long,
+    @field:Json(name = "price_old") @Price val regularPrice: Long,
     @field:Json(name = "price_cut") val discountPercent: Int,
     @field:Json(name = "added") val timeAddedSecondsUtc: Long,
     @field:Json(name = "shop") val store: Store,

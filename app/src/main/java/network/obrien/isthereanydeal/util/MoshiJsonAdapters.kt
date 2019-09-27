@@ -18,13 +18,27 @@
 package network.obrien.isthereanydeal.util
 
 import com.squareup.moshi.FromJson
+import com.squareup.moshi.JsonQualifier
 import com.squareup.moshi.ToJson
 import java.math.BigDecimal
+import kotlin.annotation.AnnotationRetention.RUNTIME
 
-object BigDecimalAdapter {
+@JsonQualifier
+@MustBeDocumented
+@Retention(RUNTIME)
+annotation class Price
+
+/**
+ * Convert between string representations of decimal currency values and longs representing cents or similar
+ */
+class PriceAdapter {
+    private val priceMultiplier: BigDecimal by lazy { BigDecimal(100) }
+
     @FromJson
-    fun fromJson(json: String): BigDecimal = BigDecimal(json)
+    @Price
+    fun fromJson(price: String): Long = BigDecimal(price).multiply(priceMultiplier).toLong()
 
     @ToJson
-    fun toJson(bigDecimal: BigDecimal): String = bigDecimal.toString()
+    fun toJson(@Price price: Long): String =
+        BigDecimal(price).divide(priceMultiplier).toPlainString()
 }

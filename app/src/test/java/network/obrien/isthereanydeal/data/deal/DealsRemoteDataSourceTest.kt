@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test
 import retrofit2.Response
 import java.io.IOException
 
-class DealsRemoteDataSourceTest {
+internal class DealsRemoteDataSourceTest {
     private lateinit var service: IsThereAnyDealService
     private lateinit var dataSource: DealsRemoteDataSource
 
