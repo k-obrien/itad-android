@@ -30,7 +30,7 @@ data class Deal(
     @field:Json(name = "title") val gameTitle: String,
     @field:Json(name = "price_new") @Price val dealPrice: Long,
     @field:Json(name = "price_old") @Price val regularPrice: Long,
-    @field:Json(name = "price_cut") val discountPercent: Int,
+    @field:Json(name = "price_cut") val percentDiscount: Int,
     @field:Json(name = "added") val timeAddedSecondsUtc: Long,
     @field:Json(name = "shop") val store: Store,
     @field:Json(name = "drm") val drm: DrmPlatforms,
