@@ -17,12 +17,11 @@
 
 package network.obrien.isthereanydeal.domain.model
 
-import org.threeten.bp.OffsetDateTime
-
-data class Deal(
+data class StoreListing(
     val id: Long,
-    val gameId: String,
-    val gameTitle: String,
-    val added: OffsetDateTime,
-    val listings: List<StoreListing>
+    val storeName: String,
+    val currentPriceInCents: Long,
+    val regularPriceInCents: Long,
+    val percentDiscount: Int,
+    val purchaseUrl: String
 )
